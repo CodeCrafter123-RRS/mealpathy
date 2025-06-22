@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mealpathy - Healing Plates, Healthy Paths</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #e8ffec;
+  }
+
+  header {
+    background-color: #FFF1DF; /* custom header background */
+  }
+
+  .motion-box {
+    transition: all 0.3s ease;
+  }
+
+  .motion-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  }
+  .text-stroke {
+    -webkit-text-stroke: 1px #ffffff;
+    color: #087A39;
+  }
+</style>
+
+</head>
+<body class="text-gray-800">
+
+ <!-- Header -->
+<header class="bg-[#FFF1DF] shadow-sm p-4 flex items-center justify-between">
+  <div class="flex items-center space-x-2">
+    <!-- Logo -->
+    <img src="images/logo.png" alt="Mealpathy Logo" class="h-16 bg-[#FFF1DF]">
+
+    <!-- Mealpathy text and quote (tightly stacked) -->
+    <div class="flex flex-col space-y-[2px] leading-none">
+      <img src="images/mealpathy-text.png" alt="Mealpathy Text" class="h-8">
+      <img src="images/mealpathy-quote.png" alt="Mealpathy Quotation" class="h-6">
+    </div>
+  </div>
+
+  <div class="space-x-3">
+<button 
+  style="background-color: #1FC010 !important; color: #FFFFFF; border: 1px solid #000000;" 
+  class="hover:bg-[#1AA90E] px-4 py-2 rounded">
+  Subscribe Now
+</button>
+
+    <button class="bg-black text-white px-4 py-2 rounded">Sign Up</button>
+    <button class="bg-black text-white px-4 py-2 rounded">Login</button>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative px-8 pt-20 pb-16 bg-[#EFFFF3] overflow-hidden" aria-labelledby="hero-heading">
+
+  <!-- Diagonal Leaf Vine -->
+  <img src="images/leaf.png"
+       alt=""
+       class="absolute top-0 left-1/3 -translate-x-1/3 translate-y-10 w-72 z-0 pointer-events-none"
+       aria-hidden="true" />
+
+  <!-- Main Content Flex -->
+  <div class="relative z-10 flex flex-row items-start justify-between gap-16 max-w-7xl mx-auto">
+
+    <!-- Left: Heading and Feature Box -->
+    <div class="flex flex-col flex-1 items-start">
+
+      <!-- Heading -->
+      <h2 id="hero-heading" class="hero-heading mb-8">
+        Healing Plates,<br>Healthy Paths
+      </h2>
+
+      <!-- Feature Box -->
+<div class="bg-white rounded-xl shadow-md p-8 w-[640px] mt-16">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+
+          <!-- Feature 1 -->
+          <div class="flex flex-col items-center space-y-3">
+            <div class="w-16 h-16 bg-[#EFFFF3] rounded-full flex items-center justify-center">
+              <img src="images/stopwatch.png" alt="60-minute delivery" class="w-15 h-15" />
+            </div>
+            <div>
+              <strong>delivery in berhampur</strong><br />
+              <span class="text-sm text-gray-600">in less than 60 minutes</span>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="flex flex-col items-center space-y-3">
+            <div class="w-16 h-16 bg-[#EFFFF3] rounded-full flex items-center justify-center">
+              <img src="images/truck.png" alt="Free delivery" class="w-15 h-15" />
+            </div>
+            <div>
+              <strong>Free delivery</strong>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="flex flex-col items-center space-y-3">
+            <div class="w-16 h-16 bg-[#EFFFF3] rounded-full flex items-center justify-center">
+              <img src="images/heart.png" alt="Fresh meals" class="w-15 h-15" />
+            </div>
+            <div>
+              <strong>Only fresh meals</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="flex-1 mt-0 flex justify-end">
+      <img src="images/salad.jpg" 
+           class="object-cover shadow-lg"
+           style="width: 550px; height: 500px; border-radius: 47px; opacity: 1;"
+           alt="Salad" />
+    </div>
+    <!-- Heading stroke style -->
+<style>
+  .hero-heading {
+    font-size: 80px;
+    font-weight: 800;
+    color: #087A39;
+    -webkit-text-stroke: 4px #FFFFFF;
+    line-height: 1.1;
+  }
+</style>
+    
+  </div>
+</section>
+
+<!-- Address Availability Section -->
+<section class="bg-[#EFFFF3] py-12 px-4">
+<div class="max-w-7xl mx-auto bg-white rounded-xl shadow-md p-10 flex flex-col md:flex-row justify-between items-center gap-6">
+
+    <!-- Text Content -->
+    <div class="text-center md:text-left">
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">
+        Check your address availability
+      </h3>
+      <p class="text-sm text-gray-500">
+        Please ensure that check your address is serviceable or not
+      </p>
+    </div>
+
+    <!-- Input Box -->
+    <form class="flex items-center space-x-0 shadow-lg rounded-lg overflow-hidden">
+      <!-- Input Field -->
+      <div class="flex items-center bg-white px-4 py-2">
+        <svg class="w-5 h-5 text-gray-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.418 6 10 6 10s6-5.582 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" clip-rule="evenodd" />
+        </svg>
+        <input type="text" placeholder="Enter delivery address"
+               class="outline-none text-sm text-gray-700 w-60 bg-transparent placeholder-gray-400" />
+      </div>
+
+      <!-- Send Button -->
+      <button type="submit" class="bg-yellow-400 text-white text-sm px-4 py-2 font-medium">
+        Send
+      </button>
+    </form>
+
+  </div>
+</section>
+
+
+  <!-- Meals Section -->
+  <section class="px-12 mt-30">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-2xl font-semibold mb-4">Our Meals</h3>
+      <div class="flex space-x-4 overflow-x-auto">
+        <img src="images/meal1.jpg" class="h-40 motion-box" alt="Meal 1">
+        <img src="images/meal2.jpg" class="h-40 motion-box" alt="Meal 2">
+        <img src="images/meal3.jpg" class="h-40 motion-box" alt="Meal 3">
+        <img src="images/meal4.jpg" class="h-40 motion-box" alt="Meal 4">
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialities Section -->
+  <section class="px-8 mt-10">
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h3 class="text-2xl font-semibold mb-4">Specialities</h3>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="motion-box p-4 bg-white rounded-lg text-center shadow">🥗 Salads</div>
+        <div class="motion-box p-4 bg-white rounded-lg text-center shadow">🍲 Steamed Veggies</div>
+        <div class="motion-box p-4 bg-white rounded-lg text-center shadow">🍛 Khichdi</div>
+        <div class="motion-box p-4 bg-white rounded-lg text-center shadow">🥣 Soup</div>
+      </div>
+    </div>
+  </section>
+
+<!-- What is Mealpathy -->
+<section class="p-8">
+<div class="bg-white border-2 border-black rounded-xl shadow-md p-6 max-w-5xl mx-auto">
+    
+    <h3 class="text-3xl font-extrabold text-center mb-6 text-[#087A39]">
+      What is Mealpathy?
+    </h3>
+
+    <div class="flex items-center justify-center space-x-4">
+
+      <!-- Left Logo -->
+      <img src="images/logo.png" alt="Left Logo" class="h-20 w-20 object-contain">
+
+      <!-- Main Content -->
+      <p class="text-lg text-gray-800 text-center leading-relaxed max-w-3xl">
+        Mealpathy is India’s first clinical nutrition platform offering medically-backed, zero-oil 
+        meal subscriptions crafted specifically for people suffering from heart disease, diabetes, 
+        inflammation, and obesity. Every bite we serve is more than food—it’s your daily dose of 
+        recovery, balance, and life.
+        <br><br>
+        We believe food should not only taste good but do good. Our meals are designed by a 
+        panel of cardiac surgeons, endocrinologists, dieticians, Ayurvedic experts, and internal 
+        medicine specialists, ensuring that each plate is a fusion of ancient wisdom and clinical 
+        precision.
+      </p>
+
+      <!-- Right Logo -->
+      <img src="images/logo.png" alt="Right Logo" class="h-20 w-20 object-contain">
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Plans Section -->
+<section class="px-8 mb-20">
+  <div class="bg-white rounded-[47px] shadow-md p-12 mx-auto max-w-[1791px] opacity-100">
+    <h3 class="text-3xl font-extrabold tracking-wider text-[#007A0B] text-center uppercase mb-10 shadow-sm">
+      Available Plans
+    </h3>
+
+    <!-- Grid of Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+      
+      <!-- Plan Card -->
+      <div class="bg-white w-[356px] h-[407px] p-6 rounded-[33px] border border-black text-center shadow-sm">
+        <h4 class="font-bold text-[#007A0B] text-[40px] mb-2">Trial Plan</h4>
+        <p class="text-sm text-gray-700">3 Days | 2 Meals/day</p>
+        <p class="text-xl font-bold text-[#007A0B] mt-1">₹499/-</p>
+        <ul class="text-sm text-[#007A0B] text-left mt-4 list-disc list-inside">
+          <li>No-oil, doctor-approved meals</li>
+          <li>Real-time health sync</li>
+          <li>Free lab report analysis</li>
+          <li>WhatsApp support</li>
+        </ul>
+      </div>
+
+      <!-- Starter Plan -->
+      <div class="bg-white w-[356px] h-[407px] p-6 rounded-[33px] border border-black text-center shadow-sm">
+        <h4 class="font-bold text-[#007A0B] text-[40px] mb-2">Starter Plan</h4>
+        <p class="text-sm text-gray-700">7 Days | 2 Meals/day</p>
+        <p class="text-xl font-bold text-[#007A0B] mt-1">₹1199/-</p>
+        <ul class="text-sm text-[#007A0B] text-left mt-4 list-disc list-inside">
+          <li>No-oil, doctor-approved meals</li>
+          <li>Real-time health sync</li>
+          <li>Lab report analysis</li>
+          <li>WhatsApp support</li>
+        </ul>
+      </div>
+
+      <!-- Healing Plan -->
+      <div class="bg-white w-[356px] h-[407px] p-6 rounded-[33px] border border-black text-center shadow-sm">
+<h4 class="text-[40px] font-bold mb-2 !text-[#007A0B]">Healing Plan</h4>
+        <p class="text-sm text-gray-700">15 Days | 2 Meals/day</p>
+        <p class="text-xl font-bold text-[#007A0B] mt-1">₹2499/-</p>
+        <ul class="text-sm text-[#007A0B] text-left mt-4 list-disc list-inside">
+          <li>All benefits of trial plan</li>
+        </ul>
+      </div>
+
+      <!-- Recovery Plan -->
+      <div class="bg-white w-[356px] h-[407px] p-6 rounded-[33px] border border-black text-center shadow-sm">
+        <h4 class="font-bold text-[#007A0B] text-[40px] mb-2">Recovery Plan</h4>
+        <p class="text-sm text-gray-700">30 Days | 2 Meals/day</p>
+        <p class="text-xl font-bold text-[#007A0B] mt-1">₹5999/-</p>
+        <ul class="text-sm text-[#007A0B] text-left mt-4 list-disc list-inside">
+          <li>No-oil, doctor-approved meals</li>
+          <li>Real-time health sync</li>
+          <li>Free lab report analysis</li>
+          <li>WhatsApp support</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sign In Button -->
+    <div class="text-center mt-10">
+      <button class="bg-[#1FC010] text-white border border-black px-8 py-3 rounded-lg font-semibold shadow-md hover:brightness-90 transition duration-200">
+        Sign in to select plan
+      </button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Instagram Section -->
+<section class="px-16 mb-60">
+  <div class="bg-white rounded-lg shadow-md p-8">
+    <h3 class="text-lg font-semibold mb-6 text-[#087A39]">
+      #Mealpathy in <span class="text-indigo-500">Instagram</span>
+    </h3>
+    <div class="flex overflow-x-auto whitespace-nowrap space-x-4 pb-2">
+      <img src="images/insta1.png" alt="Insta 1" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta2.png" alt="Insta 2" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta3.png" alt="Insta 3" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta4.png" alt="Insta 4" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta5.png" alt="Insta 5" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta6.png" alt="Insta 6" class="w-40 h-40 object-cover rounded-lg shadow" />
+      <img src="images/insta7.png" alt="Insta 7" class="w-40 h-40 object-cover rounded-lg shadow" />
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+<footer style="background-color: #FFF1DF;" class="text-black p-6">
+    <div class="flex justify-between items-start flex-wrap">
+    <div>
+      <img src="images/logo.png" class="h-12 mb-4" alt="Mealpathy Logo">
+            <img src="images/mealpathy-text.png" class="h-12 mb-4" alt="Mealpathy Logo">
+
+    </div>
+    <div class="grid grid-cols-3 gap-10 mt-4 md:mt-0">
+      <div>
+        <h4 class="font-semibold mb-2">About us</h4>
+        <ul class="text-sm space-y-1">
+          <li>Concept</li>
+          <li>Franchise</li>
+          <li>Business</li>
+          <li>Supplier signup</li>
+          <li>For Investors</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Get help</h4>
+        <ul class="text-sm space-y-1">
+          <li>Read FAQs</li>
+          <li>Restaurants</li>
+          <li>Specialities</li>
+          <li>Sign up to deliver</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Contact us</h4>
+        <ul class="text-sm space-y-1">
+          <li>Berhampur</li>
+          <li>0800 111 126</li>
+          <li>mealpathy@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- New Section: Why We Exist & What We Serve -->
+  <div class="mt-10 max-w-4xl mx-auto text-sm leading-relaxed space-y-4">
+    <h2 class="text-xl font-bold text-green-300">Why We Exist</h2>
+    <p>
+      In a world drowning in ghee, butter, and invisible oils—even in so-called “healthy meals”—we dared to ask:<br />
+      <span class="text-color: #087A39">What if healing could begin in the kitchen, not the ICU?</span>
+    </p>
+    <p>
+      Every year, 7 out of 10 chronic conditions are linked to what we eat. Most patients are forced to choose between tasteless "hospital food" or spicy, oily meals that worsen their conditions.<br />
+      <span class="font-semibold text-green-200">Mealpathy bridges this impossible gap</span>—with meals that are delicious, oil-free, doctor-approved, and made for real recovery.
+    </p>
+
+    <h2 class="text-xl font-bold text-green-300 mt-6">What We Serve</h2>
+    <p>We offer customized zero-oil meal plans for four high-risk categories:</p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li>Cardiac Stroke & Post-Bypass Patients</li>
+      <li>Diabetics on Medication & Insulin</li>
+      <li>Inflammatory Conditions (e.g., Arthritis, IBS, Skin Disorders)</li>
+      <li>Obese Individuals Seeking Medically-Guided Weight Loss</li>
+    </ul>
+    <p class="mt-4">Each meal is:</p>
+    <ul class="list-disc list-inside space-y-1 ml-4">
+      <li>100% free from oil, ghee, butter, or margarine</li>
+      <li>Balanced with Ayurvedic food principles</li>
+      <li>Customizable to your lab reports and recovery path</li>
+      <li>Integrated with real-time health tracking</li>
+    </ul>
+  </div>
+
+  <!-- Founder's Word -->
+  <div class="mt-10 text-center text-sm">
+    <p class="class="text-[#087A39]">Founder's Word</p>
+    <p class="max-w-2xl mx-auto">
+      “Mealpathy is my da’wah of healing. I built it not just to replace meals but to rewrite the medical history of every patient we touch—with compassion, clarity, and food that heals.”
+    </p>
+    <div class="mt-2 flex items-center justify-center">
+      <img src="images/founder.png" alt="Founder" class="h-12 w-12 rounded-full mr-2">
+      <span>— RASHMI RANJAN SAHU, Founder</span>
+    </div>
+<div class="mt-4 text-center text-sm text-gray-400">
+  @copyright; 2025 <span class="text-[#087A39] font-semibold">mealp@thy tech~team</span>
+</div>
+  </div>
+</footer>

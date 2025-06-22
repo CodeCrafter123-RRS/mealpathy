@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mealpathy | Create Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #EFFFF3;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card-shadow {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4">
+
+  <!-- Container -->
+  <div class="flex flex-col lg:flex-row bg-white rounded-[20px] card-shadow overflow-hidden relative w-full max-w-6xl animate-fadeIn">
+
+    <!-- Left Side -->
+    <div class="relative flex-1 bg-[#EFFFF3] p-10 flex flex-col justify-center items-center">
+            <img src="images/logo.png" alt="Mealpathy" class="w-52 mb-6" />
+
+      <img src="images/mealpathy-text.png" alt="Mealpathy" class="w-52 mb-6" />
+      <img src="images/bg-logo.png" class="absolute bottom-[-30px] right-[-30px] w-[150px] opacity-10" />
+      <img src="images/bg-logo.png" class="absolute top-[-30px] left-[-30px] w-[150px] opacity-10" />
+      <p class="text-center text-[#087A39] text-lg font-semibold max-w-xs mt-4">
+        India’s first clinical nutrition platform. Medically-backed, zero-oil, healing meals.
+      </p>
+    </div>
+
+    <!-- Right Side - Signup Form -->
+    <div class="flex-1 p-10 relative z-10">
+
+      <h2 class="text-xl font-semibold text-center text-gray-800 mb-8">Create an account</h2>
+
+      <!-- Name -->
+      <label class="block text-sm text-gray-700 mb-1">Name Of The User</label>
+      <input type="text" class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:ring-2 focus:ring-[#087A39]" placeholder="Enter your profile name" />
+
+      <!-- Email -->
+      <label class="block text-sm text-gray-700 mb-1">Enter your email</label>
+      <input type="email" class="w-full px-4 py-2 mb-4 border border-gray-300 rounded focus:ring-2 focus:ring-[#087A39]" placeholder="Enter your email address" />
+
+      <!-- Password -->
+      <label class="block text-sm text-gray-700 mb-1">Create a password</label>
+      <div class="relative mb-4">
+        <input type="password" id="password" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#087A39]" placeholder="Enter your password"/>
+        <span onclick="togglePassword('password', 'toggle1')" id="toggle1" class="absolute right-3 top-2.5 cursor-pointer text-sm text-gray-600">👁️</span>
+      </div>
+
+      <!-- Confirm Password -->
+      <label class="block text-sm text-gray-700 mb-1">Confirm password</label>
+      <div class="relative mb-4">
+        <input type="password" id="confirm-password" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#087A39]" placeholder="Confirm your password"/>
+        <span onclick="togglePassword('confirm-password', 'toggle2')" id="toggle2" class="absolute right-3 top-2.5 cursor-pointer text-sm text-gray-600">👁️</span>
+      </div>
+
+      <p class="text-xs text-gray-500 mb-4">Use 8 or more characters with a mix of letters, numbers & symbols</p>
+
+      <!-- Terms -->
+      <p class="text-xs text-gray-600 mb-4 text-center">
+        By creating an account, you agree to the
+        <a href="#" class="text-[#087A39] font-medium underline">Terms of use</a> and
+        <a href="#" class="text-[#087A39] font-medium underline">Privacy Policy</a>.
+      </p>
+
+      <!-- Button -->
+      <button class="w-full py-2 bg-[#1FC010] text-white font-semibold rounded-md shadow border border-black hover:brightness-90 transition">
+        Sign Up!
+      </button>
+
+      <!-- Login -->
+      <p class="text-sm text-center mt-4 text-gray-700">
+        Already have an account? <a href="#" class="font-semibold text-black">Log in</a>
+      </p>
+
+      <!-- Divider -->
+      <div class="flex items-center justify-center my-4">
+        <hr class="w-1/4 border-t border-gray-300">
+        <span class="mx-3 text-sm text-gray-500">Or continue with</span>
+        <hr class="w-1/4 border-t border-gray-300">
+      </div>
+
+      <!-- Social Icons -->
+      <div class="flex justify-center space-x-6">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/facebook/facebook-original.svg" class="w-6 h-6 cursor-pointer" alt="Facebook" />
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" class="w-6 h-6 cursor-pointer" alt="Apple" />
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" class="w-6 h-6 cursor-pointer" alt="Google" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Password toggle script -->
+  <script>
+    function togglePassword(fieldId, toggleId) {
+      const field = document.getElementById(fieldId);
+      const toggle = document.getElementById(toggleId);
+      if (field.type === "password") {
+        field.type = "text";
+        toggle.textContent = "🙈";
+      } else {
+        field.type = "password";
+        toggle.textContent = "👁️";
+      }
+    }
+  </script>
+</body>
+</html>
