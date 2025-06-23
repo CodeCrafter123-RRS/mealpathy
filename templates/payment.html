@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mealpathy - Recovery Plan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #e0f2e9;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 5rem;
+      gap: 5rem;
+    }
+
+    .left-panel {
+      background: #f6fff9;
+      padding: 2rem;
+      border-radius: 12px;
+      min-width: 300px;
+      min-height: 500px;
+    }
+
+    .right-panel {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      min-width: 300px;
+    }
+
+    .plan-title {
+      font-size: 5rem;
+      color: #1b512d;
+    }
+
+    .tagline {
+      color: #418f55;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .description {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .green-heading {
+      color: #35b24b;
+      font-size: 2rem;
+      margin-top: 2rem;
+    }
+
+    .plan-details p {
+      font-size: 1.5rem;
+      margin: 0.4rem 0;
+    }
+
+    .payment-summary {
+      background-color: #f8fef8;
+      border: 2px solid #c7e8c7;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      font-size: 1.6rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .payment-summary h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #007a0b;
+      border-bottom: 2px solid #007a0b;
+      padding-bottom: 0.4rem;
+    }
+
+    .payment-summary p {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.6rem 0;
+    }
+
+    .payment-summary p strong {
+      font-size: 1.5rem;
+    }
+
+    .discount-section,
+    .gst-section {
+      margin-top: 1.5rem;
+    }
+
+    .discount-section input,
+    .gst-section input {
+      width: 70%;
+      padding: 1.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .discount-section button,
+    .gst-section button {
+      width: 25%;
+      background: #28a745;
+      color: white;
+      padding: 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5px;
+      font-size: 1rem;
+    }
+
+    .razorpay-box {
+      background: #f0fff0;
+      margin-top: 2rem;
+      padding: 3rem;
+      border-radius: 10px;
+    }
+
+    .razorpay-logo {
+      width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+    .payment-options {
+      list-style: none;
+      padding: 0;
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem; /* Updated: Increased gap between icons */
+      justify-content: center;
+    }
+
+    .payment-options li {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+      width: 100px;
+    }
+
+    .payment-options li .icon {
+      background-color: white;
+      border: 2px solid white;
+      border-radius: 50%;
+      padding: 20px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .payment-options li .icon:hover {
+      transform: scale(1.2);
+    }
+
+    .payment-options li img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+
+    .footer-top {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      flex: 1;
+      padding: 0 1rem;
+      min-width: 150px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    /* Header Layout */
+    .header {
+      background-color: #FFF1DF;
+      padding: 1rem 2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-left img {
+      background-color: #FFF1DF;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .h-16 { height: 64px; }
+    .h-8 { height: 32px; }
+    .h-6 { height: 24px; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img src="../images/logo.png" alt="Mealpathy Logo" class="h-16">
+      <div style="display: flex; flex-direction: column;">
+        <img src="../images/mealpathy-text.png" alt="Mealpathy Text" class="h-8">
+        <img src="../images/mealpathy-quote.png" alt="Mealpathy Quote" class="h-6">
+      </div>
+    </div>
+    <div class="hamburger">&#9776;</div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Left Section -->
+    <section class="left-panel">
+      <div style="display: flex; flex-direction: column; align-items: start; gap: 6px; margin-bottom: 1rem;">
+        <img src="../images/logo.png" alt="Logo" style="height: 60px; margin-top: 8px;">
+        <img src="../images/mealpathy-text.png" alt="Mealpathy Text" style="height: 32px;">
+        <img src="../images/mealpathy-quote.png" alt="Mealpathy Quote" style="height: 20px;">
+      </div>
+
+      <h2 class="plan-title">Recovery Plan</h2>
+      <p class="tagline">Science-Backed, Soul-Fueling Nutrition</p>
+      <p class="description">
+        A 30-day personalized no-oil meal subscription crafted for patients recovering from cardiac events, diabetes, stroke, or obesity. Includes 2 doctor-approved, nutrient-rich meals per day, designed by dieticians and Ayurvedic experts to support healing, manage vitals, and promote long-term wellness.
+      </p>
+
+      <h3 class="green-heading">30 Days Diabetic Plan</h3>
+      <div class="plan-details">
+        <p><strong>Duration:</strong> 30 days</p>
+        <p><strong>Start Date:</strong> 22th June 2025</p>
+        <p><strong>Delivery Address:</strong> Gandhi Nagar, Berhampur,<br>3rd Line, Odisha-760001</p>
+      </div>
+    </section>
+
+    <!-- Right Section -->
+    <section class="right-panel">
+      <div class="payment-summary">
+        <h3>Payment Summary</h3>
+        <p>Base Plan Cost <span>₹ 4,999.00</span></p>
+        <p>GST(18%) <span>₹ 899.82</span></p>
+        <p>Total Bill Amount <span>₹ 5,898.82</span></p>
+        <p>Discount/Coupon <span>- ₹ 1,898.82</span></p>
+        <hr>
+        <p><strong>Total Payable</strong> <span><strong>₹ 3,999.00</strong></span></p>
+      </div>
+
+      <div class="discount-section">
+        <input type="text" placeholder="Have a discount code?">
+        <button>Apply</button>
+      </div>
+
+      <div class="razorpay-box">
+        <img src="../images/razorpay.png" alt="Razorpay" class="razorpay-logo">
+        <ul class="payment-options">
+          <li><div class="icon"><img src="../images/UPI Unified Payments Interface.svg" alt="UPI"></div>UPI</li>
+          <li><div class="icon"><img src="../images/debit-card.png" alt="Card"></div>Credit/Debit</li>
+          <li><div class="icon"><img src="../images/mobile-banking.png" alt="NetBanking"></div>Net Banking</li>
+          <li><div class="icon"><img src="../images/wallet.png" alt="Wallet"></div>Wallet</li>
+        </ul>
+      </div>
+
+      <div class="gst-section">
+        <label for="gst">Do you have GSTIN?</label><br/>
+        <input type="text" id="gst" placeholder="Enter Here">
+        <button>Get Invoice</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">Mealpathy</div>
+    <div class="footer-columns">
+      <div>
+        <p>Concept</p>
+        <p>Franchise</p>
+        <p>Business</p>
+        <p>Supplier Signup</p>
+        <p>For Investors</p>
+      </div>
+      <div>
+        <p>Read FAQs</p>
+        <p>Restaurants</p>
+        <p>Specialties</p>
+        <p>Sign up to deliver</p>
+      </div>
+      <div>
+        <p>Berhampur</p>
+        <p>0800 111 126</p>
+        <p>mealpathy@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Privacy Policy</span>
+      <span>Terms</span>
+      <span>© 2025 Mealpathy</span>
+    </div>
+  </footer>
+</body>
+</html>
