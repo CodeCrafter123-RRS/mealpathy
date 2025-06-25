@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mealpathy Health Log</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom green shades for glow effect */
+    .glow-btn {
+      background: linear-gradient(90deg, #145214, #1a661a, #1d701d);
+      box-shadow:
+        0 0 4px #145214,
+        0 0 8px #1a661a,
+        0 0 12px #1d701d;
+      transition: box-shadow 0.3s ease;
+    }
+    .glow-btn:hover {
+      box-shadow:
+        0 0 8px #49a849,
+        0 0 18px #49a849,
+        0 0 28px #49a849;
+    }
+    /* Custom scrollbar for report upload progress */
+    .thumb-green::-webkit-scrollbar-thumb {
+      background-color: #1a661a;
+      border-radius: 6px;
+    }
+    .icon-button {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .icon-button:hover {
+      transform: scale(1.1);
+    }
+    /* Circle icons border and background for organ selection */
+.organ-icon {
+  background-color: #e6fbe3;
+  border: 2px solid #14b814;
+  border-radius: 1rem;
+  padding: 0.7rem;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.organ-icon:hover {
+  transform: scale(1.08);
+}
+
+.organ-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+
+  </style>
+</head>
+<body class="bg-gradient-to-b from-green-50 via-green-100 to-green-50 min-h-screen flex flex-col">
+
+  <!-- Header -->
+<header class="flex items-center justify-between px-6 py-2 shadow-md sticky top-0 z-50" style="background-color: #FFF1DF;">
+  <div class="flex items-center space-x-3">
+    <img src="../images/logo.png" alt="Mealpathy Logo" class="w-14 h-14 object-contain" />
+    <div>
+      <img src="/images/mealpathy-text.png" alt="Mealpathy Logo Text" class="h-6 md:h-7" />
+      <img src="/images/mealpathy-quote.png" alt="Mealpathy Tagline" class="h-4 md:h-5 mt-1" />
+    </div>
+  </div>
+  <button aria-label="Menu" title="Menu"
+    class="w-9 h-9 bg-white rounded-full shadow-md flex flex-col justify-center items-center space-y-1 hover:shadow-lg focus:outline-none"
+    id="menuToggle">
+    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
+    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
+    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
+  </button>
+</header>
+
+
+  <main class="flex flex-1">
+    <!-- Sidebar -->
+    <nav class="bg-white w-56 px-8 py-12 shadow-inner hidden sm:flex flex-col space-y-6 sticky top-0 h-screen">
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="1">Dashboard</a>
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="2">Subscriptions</a>
+      <a href="#" class="text-green-800 font-extrabold text-xl underline decoration-green-400 flex-shrink-0" tabindex="3" aria-current="page">Health Log</a>
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="4">Favorite</a>
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="5">Profile</a>
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="6">Notifications</a>
+      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="7">Settings</a>
+    </nav>
+
+    <!-- Content area -->
+    <section class="flex-1 p-8 bg-gradient-to-tr from-green-50 via-green-100 to-green-50 overflow-auto">
+      <div class="max-w-full md:max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+
+        <!-- Left content: Organ health + report upload -->
+        <div class="flex-1 space-y-8">
+
+          <!-- Organ Health -->
+          <section aria-labelledby="organHealthTitle" class="bg-green-50 rounded-lg p-6 shadow-inner border border-green-100">
+            <h2 id="organHealthTitle" class="text-2xl font-extrabold text-green-800 tracking-tight mb-2 select-none">Organ Health</h2>
+            <p class="text-green-700 text-sm mb-6 select-none">Choose which one you want to take care off.</p>
+            <div class="flex flex-wrap gap-6 items-center">
+
+<button type="button" aria-label="Select Brain" class="organ-icon" data-organ="brain" tabindex="8" title="Brain">
+  <img src="/images/brain.png" alt="Brain" />
+</button>
+
+<button type="button" aria-label="Select Heart" class="organ-icon" data-organ="heart" tabindex="9" title="Heart">
+  <img src="/images/heart.png" alt="Heart" />
+</button>
+
+<button type="button" aria-label="Select Kidney" class="organ-icon" data-organ="kidney" tabindex="10" title="Kidney">
+  <img src="/images/kidney.png" alt="Kidney" />
+</button>
+
+<button type="button" aria-label="Select Liver" class="organ-icon" data-organ="liver" tabindex="11" title="Liver">
+  <img src="/images/liver.png" alt="Liver" />
+</button>
+
+<button type="button" aria-label="Select Lungs" class="organ-icon" data-organ="lungs" tabindex="12" title="Lungs">
+  <img src="/images/Lungs.png" alt="Lungs" />
+</button>
+
+<button type="button" aria-label="Select Pancreas" class="organ-icon" data-organ="pancreas" tabindex="13" title="Pancreas">
+  <img src="/images/pancreas.png" alt="Pancreas" />
+</button>
+
+<button type="button" aria-label="Select Thyroid" class="organ-icon" data-organ="thyroid" tabindex="14" title="Thyroid">
+  <img src="/images/thyroid.png" alt="Thyroid" />
+</button>
+
+
+            </div>
+          </section>
+
+          <!-- Upload Reports -->
+          <section aria-labelledby="uploadReportsTitle" class="bg-green-50 rounded-lg p-6 shadow-inner border border-green-100 select-none">
+            <h3 id="uploadReportsTitle" class="text-green-800 font-bold mb-2">Upload Your Reports Directly. <span class="text-gray-700 font-normal">File should be <em>.jpg</em>, <em>.png</em>, or <em>.pdf</em></span></h3>
+            <label for="fileUpload" class="cursor-pointer flex flex-col items-center border border-dotted border-green-300 rounded-lg p-12 text-green-700 hover:border-green-500 hover:bg-green-100 transition">
+              <svg aria-hidden="true" class="w-12 h-12 mb-4 text-green-700" fill="currentColor" viewBox="0 0 20 20"><path d="M9 11V3H7v8H2l8 8 8-8h-5z"/></svg>
+              <span class="text-sm">Upload or Drag &amp; Drop your file here.</span>
+              <input type="file" id="fileUpload" multiple accept=".jpg,.png,.pdf" class="hidden" />
+            </label>
+
+            <div class="mt-8 space-y-4">
+              <!-- Progress Bar 1 -->
+              <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 flex justify-center items-center bg-green-900 text-white font-semibold rounded-sm select-none">JPG</div>
+                <progress max="100" value="100" class="flex-1 rounded-lg overflow-hidden h-4 accent-green-700"></progress>
+                <span class="text-green-700 font-semibold select-none whitespace-nowrap">100%</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600 select-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+
+              <!-- Progress Bar 2 -->
+              <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 flex justify-center items-center bg-green-900 text-white font-semibold rounded-sm select-none">PDF</div>
+                <progress max="100" value="50" class="flex-1 rounded-lg overflow-hidden h-4 accent-green-700"></progress>
+                <span class="text-green-700 font-semibold select-none whitespace-nowrap">50%</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-90 text-green-600 select-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 17v-6"/></svg>
+              </div>
+            </div>
+
+            <button type="button" class="mt-6 w-full glow-btn text-white font-semibold py-2 rounded shadow-sm hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-green-600" tabindex="15">
+              Analyze Your Reports
+            </button>
+          </section>
+        </div>
+
+        <!-- Right content: Vitals log -->
+        <div class="flex-1 max-w-md">
+          <section aria-labelledby="digitalRecordsTitle" class="border border-green-700 rounded-lg p-6 bg-white shadow-md select-none">
+            <h2 id="digitalRecordsTitle" class="font-extrabold text-green-800 mb-3 select-none">
+              Keep Records Digitally
+            </h2>
+            <p class="text-green-700 mb-5 text-sm select-none">Track your vitals. Stay ahead of risks.</p>
+
+            <form id="vitalsForm" class="space-y-4" autocomplete="off" novalidate>
+              <div>
+                <label for="oxygen" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Oxygen Saturation</span>
+                  <span>%</span>
+                </label>
+                <input id="oxygen" name="oxygen" type="number" min="0" max="100" step="1" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" value="95" placeholder="Enter value" />
+              </div>      
+
+              <div>
+                <label for="heartbeat" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Heartbeat</span>
+                  <span>bpm</span>
+                </label>
+                <input id="heartbeat" name="heartbeat" type="number" min="40" max="200" step="1" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" value="70" placeholder="Enter value" />
+              </div>
+
+              <div>
+                <label for="weight" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Weight</span>
+                  <select id="weightUnit" name="weightUnit" class="text-green-800 font-bold bg-transparent border-none appearance-none pr-6 cursor-pointer w-20 text-right">
+                    <option value="lb" selected>lb</option>
+                    <option value="kg">kg</option>
+                  </select>
+                </label>
+                <input id="weight" name="weight" type="number" min="50" max="350" step="1" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" value="150" placeholder="Enter value" />
+              </div>
+
+              <!-- Blood Count (WBC) -->
+              <div>
+                <label for="wbc" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Blood Count (WBC)</span>
+                  <span>x10³/µL</span>
+                </label>
+                <input id="wbc" name="wbc" type="number" min="3" max="12" step="0.1" value="7" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" placeholder="Enter value" />
+              </div>
+
+              <!-- Blood Pressure -->
+              <div>
+                <label class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Blood Pressure</span>
+                  <span>mmHg</span>
+                </label>
+                <div class="flex space-x-2">
+                  <input id="bp-sys" name="bp-sys" type="number" min="80" max="200" value="120" class="w-1/2 border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" placeholder="Systolic" aria-label="Systolic" />
+                  <span class="self-center text-green-800 font-bold">/</span>
+                  <input id="bp-dia" name="bp-dia" type="number" min="50" max="130" value="80" class="w-1/2 border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" placeholder="Diastolic" aria-label="Diastolic" />
+                </div>
+              </div>
+
+              <!-- Fasting Glucose -->
+              <div>
+                <label for="glucose" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Fasting Glucose</span>
+                  <span>mg/dL</span>
+                </label>
+                <input id="glucose" name="glucose" type="number" min="60" max="200" step="1" value="90" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" placeholder="Enter value" />
+              </div>
+
+              <!-- Stress (HRV) -->
+              <div>
+                <label for="hrv" class="flex justify-between font-bold text-green-800 mb-1 select-none">
+                  <span>Stress (HRV)</span>
+                  <span>ms</span>
+                </label>
+                <input id="hrv" name="hrv" type="number" min="20" max="150" step="1" value="60" class="w-full border border-green-700 rounded px-3 py-2 focus:ring-2 focus:ring-green-600" placeholder="Enter value" />
+              </div>
+
+              <!-- Submit & Track Logs Button -->
+              <button type="submit" class="w-full glow-btn text-white font-semibold py-2 rounded shadow-sm hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-green-600 mt-4">
+                Submit &amp; Track Logs
+              </button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

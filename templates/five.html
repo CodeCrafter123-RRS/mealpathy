@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mealpathy Healing Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #ddf7dc;
+            background-image: url('images/mealpathy-bg.jpg'); /* Example path, place your image in an 'images' folder */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #0b610b; /* Dark green */
+        }
+        .logo {
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-weight: 900;
+            font-style: normal;
+            font-size: 3.5rem;
+            letter-spacing: -4px;
+            color: #4caf50;
+            user-select: none;
+            line-height: 1;
+        }
+        /* Letter variations for the logo "mealpathy" */
+        .logo .m {
+            font-weight: 900;
+            font-style: normal;
+        }
+        .logo .e {
+            font-weight: 900;
+            font-style: normal; 
+        }
+        .logo .a {
+            letter-spacing: -3px;
+        }
+        .btn-outline-green {
+            border: 2px solid #4caf50;
+            color: #227022;
+            background-color: #daf3cd;
+            font-weight: 700;
+            border-radius: 0.375rem;
+            transition: all 0.25s ease;
+            padding: 0.5rem 1.25rem;
+        }
+        .btn-outline-green:hover {
+            background-color: #4caf50;
+            color: white;
+            box-shadow:
+                0 0 0 2px #256a26,
+                0 0 0 7px rgba(92, 184, 92, 0.5),
+                0 0 20px 5px rgba(92, 184, 92, 0.3);
+        }
+        .btn-solid-green {
+            background-color: #0b610b;
+            border-radius: 0.375rem;
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1.75rem;
+            box-shadow:
+                0 0 0 2px #0d8c0d,
+                0 0 0 7px rgba(0, 128, 0, 0.7),
+                0 0 24px 8px rgba(0, 128, 0, 0.6);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-solid-green:hover {
+            box-shadow:
+                0 0 12px 2px #0d8c0d,
+                0 0 32px 10px rgba(13, 140, 13, 0.9),
+                0 0 44px 15px rgba(13, 140, 13, 0.8);
+        }
+        .plan-card {
+            background-color: white;
+            border-radius: 2rem;
+            border: 1px solid #111;
+            box-shadow: 0 3px 12px rgb(0 0 0 / 0.05);
+            padding: 1.75rem 1.5rem 2.25rem;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            user-select: none;
+            color: #0b610b;
+        }
+        .plan-card.selected {
+            background-color: #4caf50 !important;
+            color: #fff !important;
+            border-color: #277a27;
+        }
+        .plan-title {
+            font-weight: 900;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .plan-info {
+            margin-bottom: 1rem;
+            user-select: text;
+        }
+        .plan-info span {
+            font-weight: 700;
+        }
+        .bold-green {
+            font-weight: 700;
+            color: #2f7d2f;
+        }
+        .price {
+            font-weight: 900;
+            font-size: 1.75rem;
+            margin: 0.15rem 0 0.5rem 0;
+            user-select: text;
+        }
+        .badge {
+            background-color: #3fdd3f;
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-left: 0.75rem;
+            user-select: none;
+        }
+        .plan-features {
+            list-style-type: disc;
+            padding-left: 1.15rem;
+            color: #0b610b;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .btn-select {
+            margin-top: 1rem;
+            background-color: #0b610b;
+            color: white;
+            font-weight: 700;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.5rem;
+            border: none;
+            box-shadow:
+                0 0 0 2px #0d8c0d,
+                0 0 15px 6px rgba(13, 140, 13, 0.8);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            user-select: none;
+        }
+        .btn-select:hover:not(:disabled) {
+            box-shadow:
+                0 0 12px 2px #0d8c0d,
+                0 0 32px 12px rgba(13, 140, 13, 1);
+        }
+        .btn-select:disabled {
+            background-color: #196619;
+            box-shadow:
+                0 0 5px 2px #114311;
+            cursor: default;
+            user-select: none;
+        }
+        /* Highlight selected recovery plan card */
+        /* Remove green background for Recovery Plan card so it stays white */
+        /* #recoveryPlan {
+            background-color: #7ee47e; 
+            border-color: #277a27;
+            color: #174d17;
+            user-select: none;
+        }
+        #recoveryPlan .btn-select {
+            background-color: #174d17;
+            color: #b6f1b6;
+            box-shadow:
+                0 0 5px 2px #124012;
+        }
+        #recoveryPlan .btn-select:hover {
+            box-shadow:
+                0 0 16px 4px #1b651b,
+                0 0 30px 15px #57db57;
+        } */
+        .health-snapshot, .meal-timing {
+            background: white;
+            padding: 1rem 1.25rem;
+            border: 1px solid #111;
+            border-radius: 0.5rem;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            user-select: none;
+        }
+        .health-snapshot {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: start;
+            font-weight: 700;
+            align-items: center;
+        }
+        .health-snapshot h2 {
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-weight: 900;
+            color: #116611;
+            user-select: none;
+        }
+        .health-tag {
+            background: white;
+            border: 1px solid #444;
+            border-radius: 0.375rem;
+            color: #4caf50;
+            padding: 0.35rem 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            user-select: text;
+            transition: all 0.25s ease;
+        }
+        .health-tag.selected {
+            background: #b9fcb9aa;
+            border-color: #4caf50;
+            font-weight: 900;
+        }
+        .meal-timing {
+            user-select: none;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(110px, 1fr));
+            column-gap: 1rem;
+            row-gap: 0.75rem;
+            text-align: center;
+            font-weight: 900;
+            color: #116611;
+        }
+        .meal-time-btn {
+            background: white;
+            border-radius: 0.375rem;
+            border: 1px solid #444;
+            font-weight: 800;
+            color: #66bb66;
+            padding: 0.45rem 0;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+        .meal-time-btn:hover {
+            background-color: #cef0ce;
+            border-color: #52b652;
+        }
+        .meal-time-btn.selected {
+            background-color: #66bb66;
+            color: white;
+            font-weight: 900;
+            box-shadow:
+                0 0 10px 3px #3e9c3e;
+        }
+        /* Tooltip style for time dropdown */
+        .time-dropdown {
+            position: absolute;
+            background-color: #d2f5d2;
+            border: 1px solid #4caf50;
+            color: #196619;
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0 0 10px 10px;
+            user-select: none;
+            width: 100px;
+            text-align: center;
+            box-shadow:
+                0 8px 16px rgba(0, 0, 0, 0.15);
+            animation: fadeInDrop 0.3s ease forwards;
+            color: #0b610b;
+            font-weight: 700;
+            cursor: default;
+            z-index: 10;
+        }
+        .time-dropdown div {
+            padding: 2px 0;
+            user-select: none;
+        }
+        @keyframes fadeInDrop {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .footer {
+            margin-top: 3rem;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #4a7d47aa;
+            text-align: center;
+            user-select: none;
+        }
+        /* Layout grid for plans & sidebar */
+        main {
+            max-width: 1400px;
+            margin: auto;
+            padding: 1rem 1rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+        }
+        .left-section {
+            user-select: none;
+        }
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0 2rem;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        /* Scrollbar style for dropdown */
+        .time-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+        .time-dropdown::-webkit-scrollbar-thumb {
+            background-color: #4caf50;
+            border-radius: 3px;
+        }
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            .meal-timing {
+                grid-template-columns: repeat(4, minmax(75px, 1fr));
+            }
+            .health-snapshot h2 {
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+            .health-snapshot {
+                gap: 0.5rem;
+                justify-content: center;
+            }
+        }
+        .meal-type-btn {
+            background: #e6fbe6;
+            border: 2px solid #4caf50;
+            color: #227022;
+            font-weight: 700;
+            border-radius: 0.375rem;
+            padding: 0.5rem 1.25rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .meal-type-btn.selected {
+            background: #4caf50;
+            color: white;
+            border-color: #277a27;
+        }
+        .meal-time-options {
+            display: none;
+        }
+        .meal-time-options.active {
+            display: flex;
+        }
+        .meal-slider-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .meal-slider {
+            width: 320px;
+            accent-color: #4caf50;
+            height: 4px;
+        }
+        .slider-labels {
+            width: 320px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #116611;
+        }
+        .slider-labels span {
+            flex: 1 1 0;
+            text-align: center;
+        }
+        .rectangle-timing {
+            background: #f6fff6;
+            border: 2px solid #4caf50;
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 18px 0 rgba(76,175,80,0.10);
+            padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (max-width: 900px) {
+            .rectangle-timing {
+                padding: 1rem 0.5rem;
+            }
+        }    
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Left section: Logo, intro, buttons, plans -->
+        <section class="left-section" aria-label="Mealpathy Healing Plan Introduction and selection">
+            <h1 class="logo" aria-label="Mealpathy Logo"><span class="m">m</span><span class="e">e</span><span class="a">a</span>lpathy</h1>
+            <h2 class="font-bold text-2xl mt-2 mb-1">Choose your healing Plan!</h2>
+            <p class="text-base max-w-md">
+                Personalized no-oil meals for your health condition.
+            </p>
+            <!-- Remove meal timing from the middle, restore to right section -->
+            <div class="button-group">
+                <button class="btn-outline-green" type="button" aria-label="Customize Your Meal Plan Button">Customize Your Meal Plan</button>
+                <button class="btn-solid-green" type="button" aria-label="Call Now Button">Call Now</button>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6 justify-start max-w-5xl">
+                <!-- Trial Plan -->
+                <article class="plan-card" id="trialPlan" tabindex="0" aria-labelledby="trial-title" role="region" aria-describedby="trial-desc trial-price">
+                    <h3 class="plan-title" id="trial-title">Trial Plan</h3>
+                    <div class="plan-info" id="trial-desc" aria-label="Plan duration and meals per day">
+                        <span>3</span> Days &nbsp; <span>2</span> Meals/day
+                    </div>
+                    <div class="price" id="trial-price" aria-label="Pricing">
+                        <span class="bold-green">For Just</span> ₹499/-
+                    </div>
+                    <ul class="plan-features" aria-label="Plan features">
+                        <li>No-oil, doctor-approved meals</li>
+                        <li>Real-time health sync</li>
+                        <li>Free lab report analysis</li>
+                        <li>WhatsApp support</li>
+                    </ul>
+                    <button class="btn-select" aria-pressed="false" aria-label="Select Trial Plan" data-plan="trial">Select</button>
+                </article>
+                <!-- Starter Plan -->
+                <article class="plan-card" id="starterPlan" tabindex="0" aria-labelledby="starter-title" role="region" aria-describedby="starter-desc starter-price">
+                    <h3 class="plan-title" id="starter-title">Starter Plan</h3>
+                    <div class="plan-info" id="starter-desc" aria-label="Plan duration and meals per day">
+                        <span>7</span> Days &nbsp; <span>2</span> Meals/day
+                    </div>
+                    <div class="price" id="starter-price" aria-label="Pricing">
+                        <span class="bold-green">For Just</span> ₹1199/-
+                        <span class="badge" aria-label="5 percent discount">5% OFF</span>
+                    </div>
+                    <ul class="plan-features" aria-label="Plan features">
+                        <li>No-oil, doctor-approved meals</li>
+                        <li>Real-time health sync</li>
+                        <li>Free lab report analysis</li>
+                        <li>WhatsApp support</li>
+                    </ul>
+                    <button class="btn-select" aria-pressed="false" aria-label="Select Starter Plan" data-plan="starter">Select</button>
+                </article>
+                <!-- Healing Plan -->
+                <article class="plan-card" id="healingPlan" tabindex="0" aria-labelledby="healing-title" role="region" aria-describedby="healing-desc healing-price">
+                    <h3 class="plan-title" id="healing-title">Healing Plan</h3>
+                    <div class="plan-info" id="healing-desc" aria-label="Plan duration and meals per day">
+                        <span>15</span> Days &nbsp; <span>2</span> Meals/day
+                    </div>
+                    <div class="price" id="healing-price" aria-label="Pricing">
+                        <span class="bold-green">For Just</span> ₹2499/-
+                        <span class="badge" aria-label="10 percent discount">10% OFF</span>
+                    </div>
+                    <ul class="plan-features" aria-label="Plan features">
+                        <li>No-oil, doctor-approved meals</li>
+                        <li>Real-time health sync</li>
+                        <li>Free lab report analysis</li>
+                        <li>WhatsApp support</li>
+                    </ul>
+                    <button class="btn-select" aria-pressed="false" aria-label="Select Healing Plan" data-plan="healing">Select</button>
+                </article>
+                <!-- Recovery Plan (moved back to the grid) -->
+                <article class="plan-card" id="recoveryPlan" tabindex="0" aria-labelledby="recovery-title" role="region" aria-describedby="recovery-desc recovery-price">
+                    <h3 class="plan-title" id="recovery-title">Recovery Plan</h3>
+                    <div class="plan-info" id="recovery-desc" aria-label="Plan duration and meals per day">
+                        <span>30</span> Days &nbsp; <span>2</span> Meals/day
+                    </div>
+                    <div class="price" id="recovery-price" aria-label="Pricing">
+                        <span class="bold-green">For Just</span> ₹5999/-
+                        <span class="badge" aria-label="20 percent discount">20% OFF</span>
+                    </div>
+                    <ul class="plan-features" aria-label="Plan features">
+                        <li>No-oil, doctor-approved meals</li>
+                        <li>Real-time health sync</li>
+                        <li>Free lab report analysis</li>
+                        <li>WhatsApp support</li>
+                    </ul>
+                    <button class="btn-select" aria-pressed="false" aria-label="Select Recovery Plan" data-plan="recovery">Select</button>
+                </article>
+            </div>
+            <!-- User Details Form -->
+            <form class="mt-10 bg-white rounded-2xl shadow p-6 max-w-lg border border-green-200" style="margin-left:0;" aria-label="Delivery Details Form">
+                <h3 class="font-bold text-xl mb-4 text-green-900">Delivery Details</h3>
+                <div class="mb-4">
+                    <label for="user-name" class="block font-semibold mb-1 text-green-800">Name</label>
+                    <input type="text" id="user-name" name="user-name" required class="w-full px-3 py-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-400" placeholder="Enter your name" />
+                </div>
+                <div class="mb-4">
+                    <label for="user-phone" class="block font-semibold mb-1 text-green-800">Phone Number</label>
+                    <input type="tel" id="user-phone" name="user-phone" required pattern="[0-9]{10}" maxlength="10" class="w-full px-3 py-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-400" placeholder="Enter your phone number" />
+                </div>
+                <div class="mb-4">
+                    <label for="user-address" class="block font-semibold mb-1 text-green-800">Delivery Address</label>
+                    <textarea id="user-address" name="user-address" required rows="3" class="w-full px-3 py-2 border border-green-300 rounded focus:outline-none focus:ring-2 focus:ring-green-400" placeholder="Enter your delivery address"></textarea>
+                </div>
+                <div class="flex justify-end mt-6">
+                    <button type="submit" class="btn-solid-green text-lg px-8 py-2" style="font-weight:900;">Submit</button>
+                </div>
+            </form>
+        </section>
+        <!-- Right section: Health Profile & Meal Timing -->
+        <aside class="right-section" aria-label="Health Profile Snapshot and Meal Timing Selection" style="user-select:none;">
+            <div class="flex flex-col gap-1 mb-4" aria-describedby="health-profile-desc" role="region" tabindex="0" style="background:none; border:none; box-shadow:none; padding:0; font-size:1.1rem; font-weight:900;">
+                <h2 id="health-profile-desc" class="text-green-900 font-extrabold mb-1" style="margin:0;">Health Profile Snapshot</h2>
+                <div class="flex flex-row flex-wrap gap-3 items-center">
+                    <!-- Order: Diabetes, Obesity, Vegetarian Low-Glycemic -->
+                    <button class="health-tag" type="button" aria-pressed="false" data-health="diabetes">Diabetes</button>
+                    <button class="health-tag" type="button" aria-pressed="false" data-health="obesity">Obesity</button>
+                    <button class="health-tag" type="button" aria-pressed="false" data-health="vegetarian-low-glycemic">Vegetarian, Low-Glycemic</button>
+                </div>
+            </div>
+            <fieldset class="meal-timing rectangle-timing" aria-label="Meal Timing Selection" aria-describedby="meal-timing-desc" style="position:relative; display:flex; flex-direction:column; gap:1rem; min-width:420px; min-height:320px;">
+                <legend class="font-bold text-lg mb-2" id="meal-timing-desc">Meal Timing Selection</legend>
+                <div class="flex flex-row flex-wrap gap-3 justify-center mb-2">
+                    <button class="meal-type-btn" type="button" data-meal="breakfast">Breakfast</button>
+                    <button class="meal-type-btn" type="button" data-meal="lunch">Lunch</button>
+                    <button class="meal-type-btn" type="button" data-meal="snacks">Snacks</button>
+                    <button class="meal-type-btn" type="button" data-meal="dinner">Dinner</button>
+                </div>
+                <div class="meal-slider-container">
+                    <input type="range" min="0" max="2" value="0" class="meal-slider" id="slider-breakfast" style="display:none;">
+                    <input type="range" min="0" max="2" value="0" class="meal-slider" id="slider-lunch" style="display:none;">
+                    <input type="range" min="0" max="1" value="0" class="meal-slider" id="slider-snacks" style="display:none;">
+                    <input type="range" min="0" max="2" value="0" class="meal-slider" id="slider-dinner" style="display:none;">
+                    <div class="slider-labels" id="slider-labels-breakfast" style="display:none;">
+                        <span>7am - 8am</span><span>8am - 9am</span><span>9am - 10am</span>
+                    </div>
+                    <div class="slider-labels" id="slider-labels-lunch" style="display:none;">
+                        <span>12pm - 1pm</span><span>1pm - 2pm</span><span>2pm - 3pm</span>
+                    </div>
+                    <div class="slider-labels" id="slider-labels-snacks" style="display:none;">
+                        <span>4pm - 5pm</span><span>5pm - 6pm</span>
+                    </div>
+                    <div class="slider-labels" id="slider-labels-dinner" style="display:none;">
+                        <span>7pm - 8pm</span><span>8pm - 9pm</span><span>9pm - 10pm</span>
+                    </div>
+                </div>
+            </fieldset>
+        </aside>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="footer" aria-label="Mealpathy Healing Plan Footer">
+        &copy; 2023 Mealpathy. All rights reserved.
+    </footer>
+
+    <script>
+        // Plan selection logic
+        document.querySelectorAll('.btn-select').forEach(button => {
+            button.addEventListener('click', () => {
+                // Deselect all plan buttons and cards
+                document.querySelectorAll('.btn-select').forEach(btn => {
+                    btn.setAttribute('aria-pressed', 'false');
+                    btn.classList.remove('selected');
+                    btn.disabled = false;
+                    btn.textContent = 'Select';
+                    btn.setAttribute('aria-label', 'Select ' + btn.closest('.plan-card').querySelector('.plan-title').textContent + ' Plan');
+                    btn.closest('.plan-card').classList.remove('selected');
+                });
+                // Select the clicked button and card
+                button.setAttribute('aria-pressed', 'true');
+                button.classList.add('selected');
+                button.disabled = true;
+                button.textContent = 'Selected';
+                button.setAttribute('aria-label', 'Selected ' + button.closest('.plan-card').querySelector('.plan-title').textContent + ' Plan');
+                button.closest('.plan-card').classList.add('selected');
+            });
+        });
+
+        // Health tag toggle
+        document.querySelectorAll('.health-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                const isSelected = tag.getAttribute('aria-pressed') === 'true';
+                tag.setAttribute('aria-pressed', String(!isSelected));
+                tag.classList.toggle('selected', !isSelected);
+            });
+        });
+
+        // Meal type selection logic with slider
+        const mealSliders = {
+            breakfast: document.getElementById('slider-breakfast'),
+            lunch: document.getElementById('slider-lunch'),
+            snacks: document.getElementById('slider-snacks'),
+            dinner: document.getElementById('slider-dinner')
+        };
+        const sliderLabels = {
+            breakfast: document.getElementById('slider-labels-breakfast'),
+            lunch: document.getElementById('slider-labels-lunch'),
+            snacks: document.getElementById('slider-labels-snacks'),
+            dinner: document.getElementById('slider-labels-dinner')
+        };
+        document.querySelectorAll('.meal-type-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.meal-type-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                const meal = btn.getAttribute('data-meal');
+                Object.keys(mealSliders).forEach(m => {
+                    mealSliders[m].style.display = 'none';
+                    sliderLabels[m].style.display = 'none';
+                });
+                mealSliders[meal].style.display = 'block';
+                sliderLabels[meal].style.display = 'flex';
+            });
+        });
+        // Show breakfast by default
+        document.querySelector('.meal-type-btn[data-meal="breakfast"]').classList.add('selected');
+        mealSliders.breakfast.style.display = 'block';
+        sliderLabels.breakfast.style.display = 'flex';
+    </script>
+</body>
+</html>
