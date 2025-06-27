@@ -62,125 +62,140 @@
   z-index: 50;
 }
 
-.heart-bg {
-  background-image: url('../images/logo.png'); /* Adjust path as needed */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.2;
-  width: 120px;  /* You can tweak size as per design */
-  height: 120px;
-  margin: auto;
-}
-
-label {
-      font-weight: 700;
-      color: #0f630b;
-      font-size: 0.85rem;
-      display: block;
-      margin-bottom: 0.25rem;
-      user-select: none;
+.container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 2rem;
+    }
+    .left-panel {
+      width: 60%;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .greeting {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #034d1f;
+    }
+    .summary {
+      color: #4b4b4b;
+      margin-bottom: 1.5rem;
     }
 
-    .input-group {
-      margin-bottom: 1.5rem;
+    .vitals {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .vitals div {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 0.5rem;
+      font-weight: bold;
     }
-
-    input[type="number"] {
-      width: 70%;
-      padding: 0.5rem 0.75rem;
-      border: 1.3px solid #342c28;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #0f630b;
-    }
-
-    input[type="number"]::placeholder {
-      font-weight: 400;
-      color: #29961c;
-    }
-
-    select {
-      width: 25%;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      border: 1.3px solid #342c28;
-      color: #14b814;
-      background-color: transparent;
-      cursor: pointer;
-      padding: 0.5rem 0.4rem;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='none' stroke='%2314b814' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 1rem 1rem;
-    }
-
-    #bmiResult {
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem;
-      border: 1.3px solid #342c28;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #0f630b;
-      background-color: white;
-    }
-
-    button {
-      background-color: #0f630b;
-      font-weight: 700;
-      color: #d9f5c9;
-      padding: 0.4rem 2rem;
-      border-radius: 0.75rem;
-      border: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      letter-spacing: 0.07em;
-      box-shadow:
-        0 0 0 3px #8edb7a,
-        0 0 0 6px #57b242,
-        0 0 0 9px #0f630b;
-      transition: all 0.25s ease-in-out;
-    }
-
-    button:hover {
-      box-shadow:
-        0 0 0 4px #a7e07c,
-        0 0 0 8px #4e9c32,
-        0 0 0 12px #0f630b;
-      background-color: #1a7a0d;
-    }
-
-    .layout-flex {
+    .right-panel {
+      width: 35%;
+      padding: 1.5rem;
       display: flex;
-      min-height: 100vh;
+      flex-direction: column;
+      gap: 1rem;
     }
-
-
-    .layout-flex {
+    .meter {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      text-align: center;
+    }
+    .meter img {
+      width: 100%;
+      max-width: 200px;
+    }
+    .status {
+      font-weight: bold;
+      color: orange;
+    }
+    .box {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .buttons button {
+      padding: 0.7rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      background: linear-gradient(90deg, #048f2e, #35d752);
+      color: white;
+      border-radius: 0.7rem;
+      cursor: pointer;
+    }
+    .appointments {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+    .appointments h3 {
+      margin-top: 0;
+      color: #034d1f;
+    }
+    .cardio {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .cardio img {
+      height: 32px;
+    }
+    .meal-plan {
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+    }
+    .meal-plan b {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .body-health {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
-  padding-top: 5rem; /* gap from header */
-  background-color: #f9fff5; /* Optional */
+  gap: 2rem;
 }
 
-.bmi-card {
-  background: #f2ffe9;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 24px #b6e7b6;
-  padding: 2rem;
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
+.image-with-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.skeleton-img {
+  display: block;
+  width: calc(100% - 10rem); /* expands image width with 5rem padding on both sides */
+  height: 500px; /* increase height as desired */
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-bottom: 5rem;
+  object-fit: contain;
+}
+
+
+.health-note {
+  margin-top: 3rem;
+  font-size: 1rem;
+  color: #114e0a;
+  text-align: center;
+  max-width: 400px;
+}
+
 
 .footer-bar {
   width: 99.5vw;                   /* Full viewport width */
@@ -280,58 +295,72 @@ label {
 </ul>
 
     </div>
-  </header>  
-  
-  <div class="layout-flex">
-    <main class="main-content">
-      <h1 style="text-align: center; font-size: 1.8rem; font-weight: 800; color: #0f630b; margin-bottom: 2rem;">
-        Body Mass Index Calculator
-      </h1>
-  
-      <div class="bmi-card">
-        <form id="bmiForm" onsubmit="return false;">
-          <div class="input-group">
-            <div style="width: 70%;">
-              <label for="heightInput">Height</label>
-              <input type="number" id="heightInput" placeholder="Enter your height" min="1" step="any" required />
-            </div>
-            <select id="heightUnit">
-              <option value="cm" selected>cm</option>
-              <option value="m">m</option>
-              <option value="inch">inch</option>
-            </select>
-          </div>
-  
-          <div class="input-group">
-            <div style="width: 70%;">
-              <label for="weightInput">Weight</label>
-              <input type="number" id="weightInput" placeholder="Enter your weight" min="1" step="any" required />
-            </div>
-            <select id="weightUnit">
-              <option value="lb" selected>lb</option>
-              <option value="kg">kg</option>
-              <option value="oz">oz</option>
-            </select>
-          </div>
-  
-          <div style="margin-bottom: 1.5rem;">
-            <label for="bmiResult">Calculated BMI</label>
-            <input type="text" id="bmiResult" readonly placeholder="BMI will appear here" />
-          </div>
-  
-          <div id="bmiCategory" style="font-weight: 700; color: #29961c; text-align: center; min-height: 1.5em; margin-bottom: 1.5rem;"></div>
-          <button type="button" id="calcBtn">Calculate</button>
-        </form>
+  </header>
+
+  <div class="container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="greeting">Good Morning, <span style="color: #008000"></br>Rashmi Ranjan Sahu!</span></div>
+      <div class="summary">Your Vitals’ Health Summary</div>
+
+      <div class="body-health">
+        <div class="image-with-text">
+          <img src="../images/health.png" alt="Body Skeleton" class="skeleton-img" />
+          <p class="health-note">
+            Bhaina tame bhala acha baaa pachas jana pachass katha kahibe kaha katha hele sunana tame bikul fine achaa jadi tike kan deha khharab hela pari lagile foreign liquor tike pi daba thik hei jiba sabuu
+          </p>
+        </div>
       </div>
-  
-      <div class="heart-bg"></div>
-    </main>
+      
+      
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="meter box">
+        <div><strong>Your Health Condition</strong></div>
+        <img src="../images/speedometer.png" alt="Meter" />
+        <div class="status">AT RISK</div>
+      </div>
+
+      <div class="box">
+        <strong>Need to Consult</strong>
+        <div style="height: 50px;"></div>
+      </div>
+
+      <div class="meal-plan box">
+        <b>Today's Meal Plan</b>
+        Lunch: Heart Health Curry <br />
+        Dinner: Diabetic Friendly Salad
+      </div>
+
+      <div class="box">
+        <div><b>BP</b>: 130/80 <span style="color: green;">mmHg</span></div>
+        <div><b>BMSP</b>: 145 <span style="color: green;">mg/dl</span></div>
+        <div><b>Weight</b>: 172 <span>lb</span></div>
+      </div>
+
+      <div class="buttons">
+        <button>Upload</button>
+        <button>Track</button>
+        <button>Calculate BMI</button>
+      </div>
+
+      <div class="appointments box">
+        <h3>Upcoming Appointments</h3>
+        <div class="cardio">
+          <img src="../images/schedule.png" alt="Calendar Icon"/>
+          <div>
+            <b>Cardiologist</b><br/>
+            Tomorrow
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-</div>
-  
-  <!-- Footer -->
-  <footer>
+
+   <!-- Footer -->
+   <footer>
     <div class="footer-top">Mealpathy</div>
     <div class="footer-columns">
       <div>
@@ -385,60 +414,6 @@ label {
       document.removeEventListener("click", closeOnClickOutside);
     }
   }
-
-  function calculateBMI(height, heightUnit, weight, weightUnit) {
-      let heightM;
-      switch (heightUnit) {
-        case "cm": heightM = height / 100; break;
-        case "m": heightM = height; break;
-        case "inch": heightM = height * 0.0254; break;
-        default: heightM = height / 100;
-      }
-
-      let weightKg;
-      switch (weightUnit) {
-        case "kg": weightKg = weight; break;
-        case "lb": weightKg = weight * 0.453592; break;
-        case "oz": weightKg = weight * 0.0283495; break;
-        default: weightKg = weight * 0.453592;
-      }
-
-      if (heightM <= 0) return null;
-      return weightKg / (heightM * heightM);
-    }
-
-    document.getElementById('calcBtn').addEventListener('click', () => {
-      const height = parseFloat(document.getElementById('heightInput').value);
-      const heightUnit = document.getElementById('heightUnit').value;
-      const weight = parseFloat(document.getElementById('weightInput').value);
-      const weightUnit = document.getElementById('weightUnit').value;
-      const bmiResult = document.getElementById('bmiResult');
-      const bmiCategory = document.getElementById('bmiCategory');
-
-      if (isNaN(height) || height <= 0 || isNaN(weight) || weight <= 0) {
-        alert("Please enter valid height and weight.");
-        bmiResult.value = "";
-        bmiCategory.textContent = "";
-        return;
-      }
-
-      const bmi = calculateBMI(height, heightUnit, weight, weightUnit);
-      if (bmi === null) {
-        alert("Invalid input values.");
-        bmiResult.value = "";
-        bmiCategory.textContent = "";
-        return;
-      }
-
-      bmiResult.value = bmi.toFixed(2);
-      let category = "";
-      if (bmi < 18.5) category = "Underweight";
-      else if (bmi < 25) category = "Normal weight";
-      else if (bmi < 30) category = "Overweight";
-      else category = "Obese";
-
-      bmiCategory.textContent = `Category: ${category}`;
-    });
 </script>
 
 

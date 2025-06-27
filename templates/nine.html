@@ -56,41 +56,184 @@
   pointer-events: none;
 }
 
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.hamburger div {
+  height: 3px;
+  background-color: #145214; /* Dark green */
+  border-radius: 2px;
+}
+
+.hidden-menu {
+  display: none;
+}
+
+.shown-menu {
+  display: block;
+  position: absolute;
+  top: 4.5rem;
+  right: 1rem;
+  background-color: #FFF1DF;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 50;
+}
+
+
+
+  /* Drag & drop area styles */
+  #upload-area {
+    border: 2px dashed #22c55e;
+    border-radius: 0.5rem;
+    background-color: #dcfce7;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #14532d;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  #upload-area.dragover {
+    background-color: #bbf7d0;
+    border-color: #15803d;
+  }
+  /* Progress bar container with label on left*/
+  .progress-wrapper {
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    position: relative;
+  }
+  .progress-bar {
+    height: 1rem;
+    border-radius: 0.375rem;
+    background-color: #15803d;
+    transition: width 0.3s ease;
+  }
+  .progress-label {
+    font-weight: 700;
+    width: 32px;
+    color: white;
+  }
+  .progress-wrapper text {
+    color: #14532d;
+  }
+
+
+  .footer-bar {
+  width: 99.5vw;                   /* Full viewport width */
+  position: relative;             /* Stay in flow, span full screen */
+  left: 50%;                      /* Center trick */
+  right: 50%;
+  margin-left: -50vw;            /* Counter the parent padding */
+  margin-right: -50vw;
+  background-color: #FFF1DF;
+  padding: 1rem 2rem;
+  margin-top: 3rem;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  border-top: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+    footer {
+      background: #222;
+      color: white;
+      padding: 2rem;
+      margin-top: 3rem;
+ }
+
+    .footer-top {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .footer-columns div {
+      flex: 1;
+      padding: 0 1rem;
+      min-width: 150px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+
   </style>
 </head>
 <body class="bg-gradient-to-b from-green-50 via-green-100 to-green-50 min-h-screen flex flex-col">
 
   <!-- Header -->
-<header class="flex items-center justify-between px-6 py-2 shadow-md sticky top-0 z-50" style="background-color: #FFF1DF;">
-  <div class="flex items-center space-x-3">
-    <img src="../images/logo.png" alt="Mealpathy Logo" class="w-14 h-14 object-contain" />
-    <div>
-      <img src="/images/mealpathy-text.png" alt="Mealpathy Logo Text" class="h-6 md:h-7" />
-      <img src="/images/mealpathy-quote.png" alt="Mealpathy Tagline" class="h-4 md:h-5 mt-1" />
+  <header class="bg-[#FFF1DF] shadow-sm p-4 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <!-- Logo -->
+      <img src="../images/logo.png" alt="Mealpathy Logo" class="h-16 bg-[#FFF1DF]">
+  
+      <!-- Mealpathy text and quote (tightly stacked) -->
+      <div class="flex flex-col space-y-[2px] leading-none">
+        <img src="../images/mealpathy-text.png" alt="Mealpathy Text" class="h-8">
+        <img src="../images/mealpathy-quote.png" alt="Mealpathy Quotation" class="h-6">
+      </div>
     </div>
-  </div>
-  <button aria-label="Menu" title="Menu"
-    class="w-9 h-9 bg-white rounded-full shadow-md flex flex-col justify-center items-center space-y-1 hover:shadow-lg focus:outline-none"
-    id="menuToggle">
-    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
-    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
-    <span class="block w-5 h-0.5 bg-gray-800 rounded-sm"></span>
-  </button>
-</header>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div id="menu" class="hidden-menu">
+        <!-- Optional dropdown menu -->
+  <ul class="space-y-4 mt-4">
+    <li>
+      <a href="#dashboard" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Dashboard</a>
+    </li>
+    <li>
+      <a href="#profile" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Profile</a>
+    </li>
+    <li>
+      <a href="#subscription" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Subscription</a>
+    </li>
+    <li>
+      <a href="#orders" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">My Orders</a>
+    </li>
+    <li>
+      <a href="#settings" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Settings</a>
+    </li>
+    <li>
+      <a href="#logout" class="block text-red-700 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-red-900">Logout</a>
+    </li>
+  </ul>
+  
+      </div>
+    </header>
 
 
   <main class="flex flex-1">
-    <!-- Sidebar -->
-    <nav class="bg-white w-56 px-8 py-12 shadow-inner hidden sm:flex flex-col space-y-6 sticky top-0 h-screen">
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="1">Dashboard</a>
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="2">Subscriptions</a>
-      <a href="#" class="text-green-800 font-extrabold text-xl underline decoration-green-400 flex-shrink-0" tabindex="3" aria-current="page">Health Log</a>
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="4">Favorite</a>
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="5">Profile</a>
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="6">Notifications</a>
-      <a href="#" class="text-green-600 font-bold text-lg hover:text-green-800 hover:underline transition" tabindex="7">Settings</a>
-    </nav>
-
     <!-- Content area -->
     <section class="flex-1 p-8 bg-gradient-to-tr from-green-50 via-green-100 to-green-50 overflow-auto">
       <div class="max-w-full md:max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
@@ -136,37 +279,44 @@
             </div>
           </section>
 
-          <!-- Upload Reports -->
-          <section aria-labelledby="uploadReportsTitle" class="bg-green-50 rounded-lg p-6 shadow-inner border border-green-100 select-none">
-            <h3 id="uploadReportsTitle" class="text-green-800 font-bold mb-2">Upload Your Reports Directly. <span class="text-gray-700 font-normal">File should be <em>.jpg</em>, <em>.png</em>, or <em>.pdf</em></span></h3>
-            <label for="fileUpload" class="cursor-pointer flex flex-col items-center border border-dotted border-green-300 rounded-lg p-12 text-green-700 hover:border-green-500 hover:bg-green-100 transition">
-              <svg aria-hidden="true" class="w-12 h-12 mb-4 text-green-700" fill="currentColor" viewBox="0 0 20 20"><path d="M9 11V3H7v8H2l8 8 8-8h-5z"/></svg>
-              <span class="text-sm">Upload or Drag &amp; Drop your file here.</span>
-              <input type="file" id="fileUpload" multiple accept=".jpg,.png,.pdf" class="hidden" />
-            </label>
+  <!-- Upload Reports Section -->
+  <section class="bg-green-100 p-6 rounded-lg shadow-md max-w-4xl space-y-6">
+    <form id="uploadForm" class="flex flex-col space-y-4">
+      <p class="text-green-900 font-bold text-base">
+        <span>Upload Your Reports Directly.</span>
+        <span class="font-normal italic"> File should be <code>.jpg</code>, <code>.png</code>, or <code>.pdf</code></span>
+      </p>
+      <label id="upload-area" for="file-upload" tabindex="0" aria-label="File upload area. Upload or drag and drop your file here.">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:32px; height:32px; color:#14532d;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4m-4 4v4"/>
+        </svg>
+        Upload or Drag & Drop your file here.
+        <input type="file" id="file-upload" name="file-upload" class="hidden" multiple accept=".jpg, .jpeg, .png, .pdf" aria-multiselectable="true" />
+      </label>
 
-            <div class="mt-8 space-y-4">
-              <!-- Progress Bar 1 -->
-              <div class="flex items-center space-x-2">
-                <div class="w-6 h-6 flex justify-center items-center bg-green-900 text-white font-semibold rounded-sm select-none">JPG</div>
-                <progress max="100" value="100" class="flex-1 rounded-lg overflow-hidden h-4 accent-green-700"></progress>
-                <span class="text-green-700 font-semibold select-none whitespace-nowrap">100%</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600 select-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
+      <!-- Progress bars -->
+      <div class="space-y-2">
+        <div class="flex items-center">
+          <span class="bg-green-900 text-white text-xs font-semibold px-2 rounded-l select-none">JPG</span>
+          <div class="progress-wrapper bg-green-200 rounded-r">
+            <div id="jpg-progress" class="progress-bar" style="width:0%"></div>
+          </div>
+          <span class="ml-2 font-semibold text-green-900" id="jpg-progress-text">0%</span>
+          <span class="ml-1 text-green-900 font-extrabold">✓</span>
+        </div>
+        <div class="flex items-center">
+          <span class="bg-green-900 text-white text-xs font-semibold px-2 rounded-l select-none">PDF</span>
+          <div class="progress-wrapper bg-green-200 rounded-r">
+            <div id="pdf-progress" class="progress-bar" style="width:0%"></div>
+          </div>
+          <span class="ml-2 font-semibold text-green-900" id="pdf-progress-text">0%</span>
+          <span class="ml-1 text-green-900 font-extrabold">–</span>
+        </div>
+      </div>
 
-              <!-- Progress Bar 2 -->
-              <div class="flex items-center space-x-2">
-                <div class="w-6 h-6 flex justify-center items-center bg-green-900 text-white font-semibold rounded-sm select-none">PDF</div>
-                <progress max="100" value="50" class="flex-1 rounded-lg overflow-hidden h-4 accent-green-700"></progress>
-                <span class="text-green-700 font-semibold select-none whitespace-nowrap">50%</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-90 text-green-600 select-none" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 17v-6"/></svg>
-              </div>
-            </div>
-
-            <button type="button" class="mt-6 w-full glow-btn text-white font-semibold py-2 rounded shadow-sm hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-green-600" tabindex="15">
-              Analyze Your Reports
-            </button>
-          </section>
+      <button type="submit" class="bg-green-900 rounded-md py-3 text-white font-bold hover:bg-green-700 transition">Analyze Your Reports</button>
+    </form>
+  </section>
         </div>
 
         <!-- Right content: Vitals log -->
@@ -254,6 +404,170 @@
         </div>
       </div>
     </section>
-  </main>
+</main>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">Mealpathy</div>
+    <div class="footer-columns">
+      <div>
+        <p>Concept</p>
+        <p>Franchise</p>
+        <p>Business</p>
+        <p>Supplier Signup</p>
+        <p>For Investors</p>
+      </div>
+      <div>
+        <p>Read FAQs</p>
+        <p>Restaurants</p>
+        <p>Specialties</p>
+        <p>Sign up to deliver</p>
+      </div>
+      <div>
+        <p>Berhampur</p>
+        <p>0800 111 126</p>
+        <p>mealpathy@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Privacy Policy</span>
+      <span>Terms</span>
+      <span>© 2025 Mealpathy</span>
+    </div>
+  </footer>
+
+
+
+
+
+  <script>
+    const menu = document.getElementById("menu");
+    const hamburger = document.querySelector(".hamburger");
+  
+    function toggleMenu() {
+      menu.classList.toggle("hidden-menu");
+      menu.classList.toggle("shown-menu");
+  
+      // Add or remove the event listener for outside clicks
+      if (menu.classList.contains("shown-menu")) {
+        document.addEventListener("click", closeOnClickOutside);
+      } else {
+        document.removeEventListener("click", closeOnClickOutside);
+      }
+    }
+  
+    function closeOnClickOutside(e) {
+      // Close menu if the click is outside the menu and hamburger
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove("shown-menu");
+        menu.classList.add("hidden-menu");
+        document.removeEventListener("click", closeOnClickOutside);
+      }
+    }
+  
+    // Drag & drop upload with progress simulation
+    const uploadArea = document.getElementById('upload-area');
+    const fileInput = document.getElementById('file-upload');
+    const jpgProgressBar = document.getElementById('jpg-progress');
+    const pdfProgressBar = document.getElementById('pdf-progress');
+    const jpgProgressText = document.getElementById('jpg-progress-text');
+    const pdfProgressText = document.getElementById('pdf-progress-text');
+  
+    // Visual feedback on drag over/out
+    uploadArea.addEventListener('dragover', e => {
+      e.preventDefault();
+      uploadArea.classList.add('dragover');
+    });
+    uploadArea.addEventListener('dragleave', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+    });
+    uploadArea.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadArea.classList.remove('dragover');
+      const files = e.dataTransfer.files;
+      handleFiles(files);
+    });
+  
+    // Handle click to open file dialog
+    uploadArea.addEventListener('click', () => {
+      fileInput.click();
+    });
+  
+    // Keyboard accessibility for label
+    uploadArea.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+  
+    // On file input change
+    fileInput.addEventListener('change', e => {
+      const files = e.target.files;
+      handleFiles(files);
+    });
+  
+    // Handle files to update progress
+    function handleFiles(files) {
+      let jpgUploaded = 0;
+      let pdfUploaded = 0;
+      let jpgTotal = 0;
+      let pdfTotal = 0;
+  
+      Array.from(files).forEach(file => {
+        const ext = file.name.split('.').pop().toLowerCase();
+        if (ext === 'jpg' || ext === 'jpeg' || ext === 'png') {
+          jpgTotal++;
+        } else if (ext === 'pdf') {
+          pdfTotal++;
+        }
+      });
+  
+      // To simulate upload delays, we'll do a fake increment
+      if(jpgTotal > 0){
+        let progress = 0;
+        const intervalJpg = setInterval(() => {
+          if (progress >= 100) {
+            clearInterval(intervalJpg);
+            jpgProgressBar.style.width = "100%";
+            jpgProgressText.textContent = "100%";
+          } else {
+            progress += 10;
+            jpgProgressBar.style.width = progress + "%";
+            jpgProgressText.textContent = progress + "%";
+          }
+        }, 100);
+      } else {
+        jpgProgressBar.style.width = "0%";
+        jpgProgressText.textContent = "0%";
+      }
+  
+      if(pdfTotal > 0){
+        let progress = 0;
+        const intervalPdf = setInterval(() => {
+          if (progress >= 50) {
+            clearInterval(intervalPdf);
+            pdfProgressBar.style.width = "50%";
+            pdfProgressText.textContent = "50%";
+          } else {
+            progress += 5;
+            pdfProgressBar.style.width = progress + "%";
+            pdfProgressText.textContent = progress + "%";
+          }
+        }, 100);
+      } else {
+        pdfProgressBar.style.width = "0%";
+        pdfProgressText.textContent = "0%";
+      }
+    }
+  
+    // Submit button simulate analyzing reports
+    document.getElementById('uploadForm').addEventListener('submit')
+  
+  
+  </script>
+
 </body>
-</html>
+</html>s

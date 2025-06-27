@@ -62,125 +62,133 @@
   z-index: 50;
 }
 
-.heart-bg {
-  background-image: url('../images/logo.png'); /* Adjust path as needed */
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.2;
-  width: 120px;  /* You can tweak size as per design */
-  height: 120px;
-  margin: auto;
-}
 
-label {
-      font-weight: 700;
-      color: #0f630b;
-      font-size: 0.85rem;
-      display: block;
-      margin-bottom: 0.25rem;
-      user-select: none;
+    h2 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
     }
 
-    .input-group {
-      margin-bottom: 1.5rem;
+    .sub-heading {
+      color: #88b388;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .horizontal-grid {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .vertical-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      width: 260px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
       display: flex;
       align-items: center;
       justify-content: space-between;
-    }
-
-    input[type="number"] {
-      width: 70%;
-      padding: 0.5rem 0.75rem;
-      border: 1.3px solid #342c28;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #0f630b;
-    }
-
-    input[type="number"]::placeholder {
-      font-weight: 400;
-      color: #29961c;
-    }
-
-    select {
-      width: 25%;
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      border: 1.3px solid #342c28;
-      color: #14b814;
-      background-color: transparent;
       cursor: pointer;
-      padding: 0.5rem 0.4rem;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg fill='none' stroke='%2314b814' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 0.5rem center;
-      background-size: 1rem 1rem;
+      transition: 0.3s;
     }
 
-    #bmiResult {
-      width: 100%;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem;
-      border: 1.3px solid #342c28;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: #0f630b;
-      background-color: white;
+    .card:hover {
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
     }
 
-    button {
-      background-color: #0f630b;
-      font-weight: 700;
-      color: #d9f5c9;
-      padding: 0.4rem 2rem;
-      border-radius: 0.75rem;
-      border: none;
-      cursor: pointer;
-      font-size: 0.9rem;
-      letter-spacing: 0.07em;
-      box-shadow:
-        0 0 0 3px #8edb7a,
-        0 0 0 6px #57b242,
-        0 0 0 9px #0f630b;
-      transition: all 0.25s ease-in-out;
-    }
-
-    button:hover {
-      box-shadow:
-        0 0 0 4px #a7e07c,
-        0 0 0 8px #4e9c32,
-        0 0 0 12px #0f630b;
-      background-color: #1a7a0d;
-    }
-
-    .layout-flex {
+    .card-content {
       display: flex;
-      min-height: 100vh;
+      align-items: center;
     }
 
+    .card-content img {
+      height: 40px;
+      margin-right: 1rem;
+    }
 
-    .layout-flex {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding-top: 5rem; /* gap from header */
-  background-color: #f9fff5; /* Optional */
-}
+    .card-content div span {
+      font-weight: bold;
+      display: block;
+    }
 
-.bmi-card {
-  background: #f2ffe9;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 24px #b6e7b6;
-  padding: 2rem;
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-}
+    .checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #000;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .checkbox.checked {
+      background-color: #0a0;
+      color: white;
+    }
+
+    .checkbox.checked::after {
+      content: '✓';
+      font-size: 16px;
+    }
+
+    .continue-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 1rem 3rem;
+      font-size: 1.1rem;
+      background: linear-gradient(to right, #56c758, #088d1d);
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      box-shadow: inset 0 0 0.3rem rgba(0, 0, 0, 0.3);
+    }
+
+    .preferences {
+      margin-top: 2rem;
+    }
+
+    .pref-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .pref-card {
+      background-color: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      text-align: center;
+      font-weight: bold;
+      color: #1f601f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+
+    .pref-card:hover {
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+    }
 
 .footer-bar {
   width: 99.5vw;                   /* Full viewport width */
@@ -235,6 +243,7 @@ label {
       text-align: center;
     }
 
+
     </style>
 </head>
 <body class="bg-green-50 font-sans text-green-900">
@@ -280,58 +289,114 @@ label {
 </ul>
 
     </div>
-  </header>  
-  
-  <div class="layout-flex">
-    <main class="main-content">
-      <h1 style="text-align: center; font-size: 1.8rem; font-weight: 800; color: #0f630b; margin-bottom: 2rem;">
-        Body Mass Index Calculator
-      </h1>
-  
-      <div class="bmi-card">
-        <form id="bmiForm" onsubmit="return false;">
-          <div class="input-group">
-            <div style="width: 70%;">
-              <label for="heightInput">Height</label>
-              <input type="number" id="heightInput" placeholder="Enter your height" min="1" step="any" required />
-            </div>
-            <select id="heightUnit">
-              <option value="cm" selected>cm</option>
-              <option value="m">m</option>
-              <option value="inch">inch</option>
-            </select>
+  </header>
+
+  <div class="section">
+    <h2>Choose your healing! <span class="sub-heading">(Select any two.)</span></h2>
+
+    <!-- Top 4 Horizontal -->
+    <div class="horizontal-grid">
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <img src="../images/heart.png" alt="Cardiac" />
+          <div>
+            <span>Cardiac</span>
+            • Heart Disease<br />
+            • Post-Stroke<br />
+            • Stents, Bypass
           </div>
-  
-          <div class="input-group">
-            <div style="width: 70%;">
-              <label for="weightInput">Weight</label>
-              <input type="number" id="weightInput" placeholder="Enter your weight" min="1" step="any" required />
-            </div>
-            <select id="weightUnit">
-              <option value="lb" selected>lb</option>
-              <option value="kg">kg</option>
-              <option value="oz">oz</option>
-            </select>
-          </div>
-  
-          <div style="margin-bottom: 1.5rem;">
-            <label for="bmiResult">Calculated BMI</label>
-            <input type="text" id="bmiResult" readonly placeholder="BMI will appear here" />
-          </div>
-  
-          <div id="bmiCategory" style="font-weight: 700; color: #29961c; text-align: center; min-height: 1.5em; margin-bottom: 1.5rem;"></div>
-          <button type="button" id="calcBtn">Calculate</button>
-        </form>
+        </div>
+        <div class="checkbox"></div>
       </div>
-  
-      <div class="heart-bg"></div>
-    </main>
+
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <img src="../images/pancreas.png" alt="Diabetes" />
+          <div>
+            <span>Diabetes</span>
+            • Type I<br />
+            • Type II
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <img src="../images/kidney.png" alt="Hypertension" />
+          <div>
+            <span>Hypertension</span>
+            • Medication<br />
+            • High BP<br />
+            • Low BP
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <img src="../images/thyroid.png" alt="Hormonal" />
+          <div>
+            <span>Hormonals</span>
+            • Thyroid<br />
+            • PCOD<br />
+            • Others
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+    </div>
+
+    <!-- Vertical Stack Centered -->
+    <div class="vertical-stack">
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <div>
+            <span>Obesity / Weight Management</span>
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <div>
+            <span>Inflammatory Disorders like Arthritis</span>
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+
+      <div class="card" onclick="toggleCheck(this)">
+        <div class="card-content">
+          <div>
+            <span>General Preventive Care</span>
+          </div>
+        </div>
+        <div class="checkbox"></div>
+      </div>
+    </div>
   </div>
-  
-</div>
-  
-  <!-- Footer -->
-  <footer>
+
+  <div class="section preferences">
+    <h2>Your Dietary Preferences! <span class="sub-heading">(Select any two.)</span></h2>
+    <div class="pref-grid">
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Vegan</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Vegetarian</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Gluten-Free</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Nut-Free</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Eggetarian</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Jain</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Low-Sodium</div>
+      <div class="pref-card" onclick="toggleCheck(this)"><div class="checkbox"></div> Low-Glycemic</div>
+    </div>
+  </div>
+
+  <button class="continue-btn">Continue</button>
+
+   <!-- Footer -->
+   <footer>
     <div class="footer-top">Mealpathy</div>
     <div class="footer-columns">
       <div>
@@ -385,60 +450,10 @@ label {
       document.removeEventListener("click", closeOnClickOutside);
     }
   }
-
-  function calculateBMI(height, heightUnit, weight, weightUnit) {
-      let heightM;
-      switch (heightUnit) {
-        case "cm": heightM = height / 100; break;
-        case "m": heightM = height; break;
-        case "inch": heightM = height * 0.0254; break;
-        default: heightM = height / 100;
-      }
-
-      let weightKg;
-      switch (weightUnit) {
-        case "kg": weightKg = weight; break;
-        case "lb": weightKg = weight * 0.453592; break;
-        case "oz": weightKg = weight * 0.0283495; break;
-        default: weightKg = weight * 0.453592;
-      }
-
-      if (heightM <= 0) return null;
-      return weightKg / (heightM * heightM);
+  function toggleCheck(card) {
+      const checkbox = card.querySelector('.checkbox');
+      checkbox.classList.toggle('checked');
     }
-
-    document.getElementById('calcBtn').addEventListener('click', () => {
-      const height = parseFloat(document.getElementById('heightInput').value);
-      const heightUnit = document.getElementById('heightUnit').value;
-      const weight = parseFloat(document.getElementById('weightInput').value);
-      const weightUnit = document.getElementById('weightUnit').value;
-      const bmiResult = document.getElementById('bmiResult');
-      const bmiCategory = document.getElementById('bmiCategory');
-
-      if (isNaN(height) || height <= 0 || isNaN(weight) || weight <= 0) {
-        alert("Please enter valid height and weight.");
-        bmiResult.value = "";
-        bmiCategory.textContent = "";
-        return;
-      }
-
-      const bmi = calculateBMI(height, heightUnit, weight, weightUnit);
-      if (bmi === null) {
-        alert("Invalid input values.");
-        bmiResult.value = "";
-        bmiCategory.textContent = "";
-        return;
-      }
-
-      bmiResult.value = bmi.toFixed(2);
-      let category = "";
-      if (bmi < 18.5) category = "Underweight";
-      else if (bmi < 25) category = "Normal weight";
-      else if (bmi < 30) category = "Overweight";
-      else category = "Obese";
-
-      bmiCategory.textContent = `Category: ${category}`;
-    });
 </script>
 
 

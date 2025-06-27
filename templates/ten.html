@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mealpathy - Health Log</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mealpathy Recovery Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom gradients and shadow for buttons */
+        .btn-gradient {
+            background: linear-gradient(45deg, #148515, #39b339, #148515);
+            box-shadow:
+                0 0 1px 1px rgba(57, 179, 57, 0.5),
+                0 0 6px 2px rgba(20, 133, 20, 0.6),
+                0 0 12px 4px #39b339cc;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(45deg, #1aa61a, #4cd54c, #1aa61a);
+            box-shadow:
+                0 0 2px 1px rgba(76, 213, 76, 0.7),
+                0 0 9px 3px rgba(26, 166, 26, 0.8),
+                0 0 14px 5px #4cd54ccc;
+        }
+        hr.custom {
+            border-color: #148515;
+            opacity: 0.4;
+        }
+        /* Scrollbar for benefits list if needed */
+        .benefits-list {
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+
+        * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -18,112 +44,43 @@
       color: #222;
     }
 
-header {
-  background: #FFF1DF;
-  padding: 0.5rem 1.5rem; /* reduced vertical and horizontal padding */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
-  display: block;
-  margin-left: auto; /* push it to the right */
-}
-
-
-    .header-left {
-      display: flex;
-      align-items: center;
-    }
-
-    .header-left img.logo {
-      height: 44px;
-      width: auto;
-      margin-right: 1rem;
-      border-radius: 0.5rem;
-      background: #FFF1DF;
-      padding: 0.2rem;
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .brand img {
-      max-height: 24px;
-      margin-bottom: 4px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav li {
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    nav li:hover {
-      color: #00b872;
-    }
-
     .container {
       display: flex;
       min-height: 100vh;
     }
 
-    .sidebar {
-      width: 240px;
-      background-color: #fff;
-      padding: 2rem 1rem;
-      border-right: 2px solid #eee;
-      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
-    }
+        .hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
 
-    .sidebar ul {
-      list-style: none;
-    }
+.hamburger div {
+  height: 3px;
+  background-color: #145214; /* Dark green */
+  border-radius: 2px;
+}
 
-    .sidebar li {
-      margin-bottom: 1.2rem;
-      font-weight: 600;
-      color: #00d26a;
-      cursor: pointer;
-      transition: 0.2s ease-in-out;
-    }
+.hidden-menu {
+  display: none;
+}
 
-    .sidebar li:hover,
-    .sidebar .active {
-      color: #fff;
-      background-color: #00d26a;
-      padding: 0.5rem;
-      border-radius: 8px;
-    }
+.shown-menu {
+  display: block;
+  position: absolute;
+  top: 4.5rem;
+  right: 1rem;
+  background-color: #FFF1DF;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 50;
+}
 
-    .main {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .header h2 {
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-   .organs {
+.organs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -373,250 +330,272 @@ header {
   background-color: #0f630b;
 }
 
-
-   .menu-toggle {
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: none; /* ✅ Hide triple bar on mobile */
-  }
-
-  #mobileMenu {
-    display: none !important; /* ✅ Hide menu on mobile completely */
-  }
-}
-
-#mobileMenu ul {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-#mobileMenu li {
-  cursor: pointer;
+.footer-bar {
+  width: 99.5vw;                   /* Full viewport width */
+  position: relative;             /* Stay in flow, span full screen */
+  left: 50%;                      /* Center trick */
+  right: 50%;
+  margin-left: -50vw;            /* Counter the parent padding */
+  margin-right: -50vw;
+  background-color: #FFF1DF;
+  padding: 1rem 2rem;
+  margin-top: 3rem;
+  text-align: center;
   font-weight: 600;
-  transition: 0.3s;
+  color: #333;
+  border-top: 1px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
-#mobileMenu li:hover {
-  color: #00b872;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav ul {
-    display: none;
-  }
-}
-
-    .footer {
-      background: #111827;
+    footer {
+      background: #222;
       color: white;
       padding: 2rem;
-      margin-top: 2rem;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      font-size: 14px;
-    }
+      margin-top: 3rem;
+ }
 
-    .footer div {
+    .footer-top {
+      font-weight: bold;
+      font-size: 1.2rem;
       margin-bottom: 1rem;
     }
 
-    .footer h4 {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 2px solid #eee;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 1rem;
-      }
+    .footer-columns div {
+      flex: 1;
+      padding: 0 1rem;
+      min-width: 150px;
     }
-  </style>
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    </style>
 </head>
-<body>
+<body class="bg-green-50 font-sans text-green-900">
 
-<!-- Header -->
-<header>
-  <div class="header-left">
-    <img src="../images/logo.png" alt="Logo" class="logo" />
-    <div class="brand">
-      <img src="../images/mealpathy-text.png" alt="Mealpathy Text" />
-      <img src="../images/mealpathy-quote.png" alt="Mealpathy Quote" />
+  <!-- Header -->
+<header class="bg-[#FFF1DF] shadow-sm p-4 flex items-center justify-between">
+  <div class="flex items-center space-x-2">
+    <!-- Logo -->
+    <img src="../images/logo.png" alt="Mealpathy Logo" class="h-16 bg-[#FFF1DF]">
+
+    <!-- Mealpathy text and quote (tightly stacked) -->
+    <div class="flex flex-col space-y-[2px] leading-none">
+      <img src="../images/mealpathy-text.png" alt="Mealpathy Text" class="h-8">
+      <img src="../images/mealpathy-quote.png" alt="Mealpathy Quotation" class="h-6">
     </div>
   </div>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-</header>
-
-
-  <!-- Page Content -->
-  <div class="container">
-    <div class="sidebar">
-      <ul>
-        <li>Dashboard</li>
-        <li>Subscriptions</li>
-        <li class="active">Health Log</li>
-        <li>Favorite</li>
-        <li>Profile</li>
-        <li>Notifications</li>
-        <li>Settings</li>
-      </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+    <div id="menu" class="hidden-menu">
+      <!-- Optional dropdown menu -->
+<ul class="space-y-4 mt-4">
+  <li>
+    <a href="#dashboard" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Dashboard</a>
+  </li>
+  <li>
+    <a href="#profile" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Profile</a>
+  </li>
+  <li>
+    <a href="#subscription" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Subscription</a>
+  </li>
+  <li>
+    <a href="#orders" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">My Orders</a>
+  </li>
+  <li>
+    <a href="#settings" class="block text-green-900 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-green-700">Settings</a>
+  </li>
+  <li>
+    <a href="#logout" class="block text-red-700 font-semibold text-base transition-all duration-300 hover:translate-x-1 hover:text-red-900">Logout</a>
+  </li>
+</ul>
+    </div>
+  </header>
 
-    <div class="main">
-      <h2>Organ Health</h2>
-      <p>Choose which one you want to take care of.</p>
+<!--main-->
+<div class="main">
+    <h2>Organ Health</h2>
+    <p>Choose which one you want to take care of.</p>
 <div class="organs">
+<div class="organ">
+  <img src="/images/brain.png" alt="Brain" />
+  <span>Brain</span>
+</div>
+<div class="organ">
+  <img src="/images/heart.png" alt="Heart" />
+  <span>Heart</span>
+</div>
+<div class="organ">
+  <img src="/images/liver.png" alt="Liver" />
+  <span>Liver</span>
+</div>
+<div class="organ">
+  <img src="/images/kidney.png" alt="Kidney" />
+  <span>Kidney</span>
+</div>
+<div class="organ">
+  <img src="/images/Lungs.png" alt="Lungs" />
+  <span>Lungs</span>
+</div>
+<div class="organ">
+  <img src="/images/thyroid.png" alt="Thyroid" />
+  <span>Thyroid</span>
+</div>
   <div class="organ">
-    <img src="/images/brain.png" alt="Brain" />
-    <span>Brain</span>
-  </div>
-  <div class="organ">
-    <img src="/images/heart.png" alt="Heart" />
-    <span>Heart</span>
-  </div>
-  <div class="organ">
-    <img src="/images/liver.png" alt="Liver" />
-    <span>Liver</span>
-  </div>
-  <div class="organ">
-    <img src="/images/kidney.png" alt="Kidney" />
-    <span>Kidney</span>
-  </div>
-  <div class="organ">
-    <img src="/images/Lungs.png" alt="Lungs" />
-    <span>Lungs</span>
-  </div>
-  <div class="organ">
-    <img src="/images/thyroid.png" alt="Thyroid" />
-    <span>Thyroid</span>
-  </div>
-    <div class="organ">
-    <img src="/images/pancreas.png" alt="pancreas" />
-    <span>pancreas</span>
-  </div>
+  <img src="/images/pancreas.png" alt="pancreas" />
+  <span>pancreas</span>
+</div>
 </div>
 
 
-      <div class="card">
-        <div class="card-title">Heart Overview: At Risk</div>
-        <div class="metrics">
-          <div class="metric">HRV <span>52 ms</span></div>
-          <div class="metric">Heartbeat <span>83 bpm</span></div>
-          <div class="metric">Blood Count <span>80–90 /mL</span></div>
-          <div class="metric">Oxygen Saturation <span>86%</span></div>
-          <div class="metric">Blood Pressure <span>130/80</span></div>
-          <div class="metric">Glucose <span>145 mg/dL</span></div>
-        </div>
-        <button class="upload-button">Upload & Track Logs</button>
+    <div class="card">
+      <div class="card-title">Heart Overview: At Risk</div>
+      <div class="metrics">
+        <div class="metric">HRV <span>52 ms</span></div>
+        <div class="metric">Heartbeat <span>83 bpm</span></div>
+        <div class="metric">Blood Count <span>80–90 /mL</span></div>
+        <div class="metric">Oxygen Saturation <span>86%</span></div>
+        <div class="metric">Blood Pressure <span>130/80</span></div>
+        <div class="metric">Glucose <span>145 mg/dL</span></div>
       </div>
+      <button class="upload-button">Upload & Track Logs</button>
+    </div>
 
 <div class="doctors">
-  <h3>Your Guardian Angels</h3>
-  
-  <div class="doctor-card-container">
-    <div class="doctor-card">
-      <img src="../images/subham.jpg" alt="Dr. Subham Mahapatro" />
-      <div class="doctor-info">
-        <p><strong>Dr. Subham Kumar Mahapatro</strong></p>
-        <p>Electrophysiologist</p>
-        <p>Doctor's Word</p>
-        <p>Besi tela masala khaibani piley khaile piles haba hele mo pakhaku asibani</p>
-      </div>
-      <div class="consult">Consult</div>
-    </div>
+<h3>Your Guardian Angels</h3>
 
-    <div class="doctor-card">
-      <img src="../images/mohit.jpg" alt="Dr. Mohit Kumar Sahu" />
-      <div class="doctor-info">
-        <p><strong>Dr. Mohit Kumar Sahu</strong></p>
-        <p>Dietician</p>
-        <p>Doctor's word</p>
-        <p>Sabu din biriyani khaile deha susta rahiba</p>
-      </div>
-      <div class="consult">Consult</div>
+<div class="doctor-card-container">
+  <div class="doctor-card">
+    <img src="../images/subham.jpg" alt="Dr. Subham Mahapatro" />
+    <div class="doctor-info">
+      <p><strong>Dr. Subham Kumar Mahapatro</strong></p>
+      <p>Electrophysiologist</p>
+      <p>Doctor's Word</p>
+      <p>Besi tela masala khaibani piley khaile piles haba hele mo pakhaku asibani</p>
     </div>
-
-    <!-- Add more doctor-cards if needed -->
+    <div class="consult">Consult</div>
   </div>
+
+  <div class="doctor-card">
+    <img src="../images/mohit.jpg" alt="Dr. Mohit Kumar Sahu" />
+    <div class="doctor-info">
+      <p><strong>Dr. Mohit Kumar Sahu</strong></p>
+      <p>Dietician</p>
+      <p>Doctor's word</p>
+      <p>Sabu din biriyani khaile deha susta rahiba</p>
+    </div>
+    <div class="consult">Consult</div>
+  </div>
+
+  <!-- Add more doctor-cards if needed -->
+</div>
 </div>
 
 <div class="meals">
-  <h3>Your Guardian Angels</h3>
+<h3>Your Guardian Angels</h3>
 
-  <div class="meal-card-container">
-    <div class="meal-card">
-      <img src="../images/meal1.jpg" alt="Breakfast" class="meal-icon" />
-      <div class="meal-details">
-        <strong>Breakfast</strong><br />
-        <small>Time: 07:00 AM</small>
-      </div>
-      <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
+<div class="meal-card-container">
+  <div class="meal-card">
+    <img src="../images/meal1.jpg" alt="Breakfast" class="meal-icon" />
+    <div class="meal-details">
+      <strong>Breakfast</strong><br />
+      <small>Time: 07:00 AM</small>
     </div>
+    <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
+  </div>
 
-    <div class="meal-card">
-      <img src="../images/meal2.jpg" alt="Lunch" class="meal-icon" />
-      <div class="meal-details">
-        <strong>Lunch</strong><br />
-        <small>Time: 12:30 PM</small>
-      </div>
-      <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
+  <div class="meal-card">
+    <img src="../images/meal2.jpg" alt="Lunch" class="meal-icon" />
+    <div class="meal-details">
+      <strong>Lunch</strong><br />
+      <small>Time: 12:30 PM</small>
     </div>
+    <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
+  </div>
 
-    <div class="meal-card">
-      <img src="../images/meal3.jpg" alt="Dinner" class="meal-icon" />
-      <div class="meal-details">
-        <strong>Dinner</strong><br />
-        <small>Time: 07:00 PM</small>
-      </div>
-      <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
+  <div class="meal-card">
+    <img src="../images/meal3.jpg" alt="Dinner" class="meal-icon" />
+    <div class="meal-details">
+      <strong>Dinner</strong><br />
+      <small>Time: 07:00 PM</small>
     </div>
+    <div class="mark-btn" onclick="toggleMark(this)">Mark as Taken</div>
   </div>
 </div>
+</div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <div>
-      <h4>About us</h4>
-      <p>Concept<br/>Franchise<br/>Business<br/>For Investors</p>
+   <!-- Footer -->
+   <footer>
+    <div class="footer-top">Mealpathy</div>
+    <div class="footer-columns">
+      <div>
+        <p>Concept</p>
+        <p>Franchise</p>
+        <p>Business</p>
+        <p>Supplier Signup</p>
+        <p>For Investors</p>
+      </div>
+      <div>
+        <p>Read FAQs</p>
+        <p>Restaurants</p>
+        <p>Specialties</p>
+        <p>Sign up to deliver</p>
+      </div>
+      <div>
+        <p>Berhampur</p>
+        <p>0800 111 126</p>
+        <p>mealpathy@gmail.com</p>
+      </div>
     </div>
-    <div>
-      <h4>Get Help</h4>
-      <p>Read FAQs<br/>Restaurants<br/>Specialties</p>
+    <div class="footer-bottom">
+      <span>Privacy Policy</span>
+      <span>Terms</span>
+      <span>© 2025 Mealpathy</span>
     </div>
-    <div>
-      <h4>Contact us</h4>
-      <p>Berhampur<br/>0800 111 126<br/>mealpathy@gmail.com</p>
-    </div>
-  </div>
+  </footer>
+</div>
+
 
 <script>
+  const menu = document.getElementById("menu");
+  const hamburger = document.querySelector(".hamburger");
+
   function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    menu.classList.toggle("hidden-menu");
+    menu.classList.toggle("shown-menu");
+
+    // Add or remove the event listener for outside clicks
+    if (menu.classList.contains("shown-menu")) {
+      document.addEventListener("click", closeOnClickOutside);
+    } else {
+      document.removeEventListener("click", closeOnClickOutside);
+    }
+  }
+
+  function closeOnClickOutside(e) {
+    // Close menu if the click is outside the menu and hamburger
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("shown-menu");
+      menu.classList.add("hidden-menu");
+      document.removeEventListener("click", closeOnClickOutside);
+    }
   }
 </script>
 

@@ -62,174 +62,6 @@
   z-index: 50;
 }
 
-
-
- .container {
-      display: flex;
-      flex-direction: column;
-      padding: 5rem;
-      gap: 5rem;
-    }
-
-    .left-panel {
-      background: #f6fff9;
-      padding: 2rem;
-      border-radius: 12px;
-      min-width: 300px;
-      min-height: 500px;
-    }
-
-    .right-panel {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 12px;
-      min-width: 300px;
-    }
-
-    .plan-title {
-      font-size: 5rem;
-      color: #1b512d;
-    }
-
-    .tagline {
-      color: #418f55;
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .description {
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      line-height: 1.5;
-    }
-
-    .green-heading {
-      color: #35b24b;
-      font-size: 2rem;
-      margin-top: 2rem;
-    }
-
-    .plan-details p {
-      font-size: 1.5rem;
-      margin: 0.4rem 0;
-    }
-
-    .payment-summary {
-      background-color: #f8fef8;
-      border: 2px solid #c7e8c7;
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      font-size: 1.6rem;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
-
-    .payment-summary h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #007a0b;
-      border-bottom: 2px solid #007a0b;
-      padding-bottom: 0.4rem;
-    }
-
-    .payment-summary p {
-      display: flex;
-      justify-content: space-between;
-      margin: 0.6rem 0;
-    }
-
-    .payment-summary p strong {
-      font-size: 1.5rem;
-    }
-
-    .discount-section,
-    .gst-section {
-      margin-top: 1.5rem;
-    }
-
-    .discount-section input,
-    .gst-section input {
-      width: 70%;
-      padding: 1.5rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    .discount-section button,
-    .gst-section button {
-      width: 25%;
-      background: #28a745;
-      color: white;
-      padding: 1.5rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 5px;
-      font-size: 1rem;
-    }
-
-    .razorpay-box {
-      background: #f0fff0;
-      margin-top: 2rem;
-      padding: 3rem;
-      border-radius: 10px;
-    }
-
-    .razorpay-logo {
-      width: 100%;
-      max-height: 120px;
-      object-fit: contain;
-    }
-
-    .payment-options {
-      list-style: none;
-      padding: 0;
-      margin-top: 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4rem; /* Updated: Increased gap between icons */
-      justify-content: center;
-    }
-
-    .payment-options li {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-weight: bold;
-      font-size: 1rem;
-      text-align: center;
-      width: 100px;
-    }
-
-    .payment-options li .icon {
-      background-color: white;
-      border: 2px solid white;
-      border-radius: 50%;
-      padding: 20px;
-      width: 80px;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-
-    .payment-options li .icon:hover {
-      transform: scale(1.2);
-    }
-
-    .payment-options li img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-    }
-
-
-
-
 .footer-bar {
   width: 99.5vw;                   /* Full viewport width */
   position: relative;             /* Stay in flow, span full screen */
@@ -330,71 +162,98 @@
     </div>
   </header>
 
+  <main class="max-w-6xl mx-auto p-6 sm:p-12">
 
+    <!-- Title and subtitle -->
+    <section>
+      <h2 class="text-3xl font-extrabold mb-1">Recovery Plan</h2>
+      <p class="text-green-800 italic font-semibold mb-6 tracking-wide">30 Days of Science–Backed, Soul–Fueling Nutrition</p>
+      <hr class="custom mb-6" />
+    </section>
 
-    <!-- Main Content -->
-  <main class="container">
-    <!-- Left Section -->
-    <section class="left-panel">
-      <div style="display: flex; flex-direction: column; align-items: start; gap: 6px; margin-bottom: 1rem;">
-        <img src="../images/logo.png" alt="Logo" style="height: 60px; margin-top: 8px;">
-        <img src="../images/mealpathy-text.png" alt="Mealpathy Text" style="height: 32px;">
-        <img src="../images/mealpathy-quote.png" alt="Mealpathy Quote" style="height: 20px;">
-      </div>
+    <!-- Why Mealpathy & Description -->
+    <section class="mb-10 max-w-4xl">
+      <h3 class="text-xl font-bold mb-2">Why Mealpathy?</h3>
+      <p class="italic mb-6 text-green-900">Because <span class="font-semibold">real healing begins with real food</span> — not pills, not promises.</p>
 
-      <h2 class="plan-title">Recovery Plan</h2>
-      <p class="tagline">Science-Backed, Soul-Fueling Nutrition</p>
-      <p class="description">
-        A 30-day personalized no-oil meal subscription crafted for patients recovering from cardiac events, diabetes, stroke, or obesity. Includes 2 doctor-approved, nutrient-rich meals per day, designed by dieticians and Ayurvedic experts to support healing, manage vitals, and promote long-term wellness.
+      <h3 class="text-xl font-bold mb-2">Description</h3>
+      <p class="italic text-green-900 max-w-prose leading-relaxed">
+        A 30-day personalized no-oil meal subscription crafted for patients recovering from cardiac events, diabetes, stroke, or obesity.
+        Includes 2 doctor-approved, nutrient–rich meals per day, designed by dieticians and Ayurvedic experts to support healing,
+        manage vitals, and promote long–term wellness.
       </p>
+    </section>
 
-      <h3 class="green-heading">30 Days Diabetic Plan</h3>
-      <div class="plan-details">
-        <p><strong>Duration:</strong> 30 days</p>
-        <p><strong>Start Date:</strong> 22th June 2025</p>
-        <p><strong>Delivery Address:</strong> Gandhi Nagar, Berhampur,<br>3rd Line, Odisha-760001</p>
+    <!-- Benefits & Price with image and main message -->
+    <section class="flex flex-col lg:flex-row justify-between items-center gap-8 mb-12">
+
+      <!-- Left side - image hidden on small screens -->
+      <div class="hidden md:block flex-1 relative max-w-md">
+        <img src="../images/logo.png" alt="Heart with leaf logo" class="opacity-30" />
+      </div>
+
+      <!-- Right side - info container -->
+      <div class="flex-1 max-w-lg bg-green-100 rounded-xl p-6 shadow-lg">
+        <div class="flex justify-between items-start mb-6">
+          <div>
+            <h4 class="text-lg font-extrabold mb-2">Benefits:</h4>
+            <ul class="list-disc list-inside italic benefits-list space-y-1 text-green-900 font-semibold">
+              <li><span class="not-italic font-semibold">Doctor-Curated Meals</span></li>
+              <li><span class="not-italic font-semibold">100% Oil-Free Healing</span></li>
+              <li><span class="not-italic font-semibold">Regular Meal Delivery</span></li>
+              <li><span class="not-italic font-semibold">Health Sync & Tracking</span></li>
+              <li><span class="not-italic font-semibold">Mental & Physical Wellness Support</span></li>
+            </ul>
+          </div>
+          <div class="text-right">
+            <p class="text-lg font-bold">Price of the Plan</p>
+            <p class="text-2xl font-extrabold text-green-700 mt-1">₹5999/-</p>
+          </div>
+        </div>
+        <p class="text-center text-green-700 font-extrabold text-xl mb-2">Your healing starts with what’s on your plate.</p>
+        <hr class="custom mb-6" />
+        <div class="flex justify-around text-center text-green-900 font-semibold text-sm sm:text-base">
+          <div>
+            <p class="text-base font-extrabold mb-1">Delivery Cost</p>  
+            <p class="italic font-bold text-lg sm:text-xl">Free</p>
+          </div>
+          <div class="border-l-2 border-green-700 px-4">
+            <p class="text-base font-extrabold mb-1">Period</p>
+            <p class="italic font-bold text-lg sm:text-xl">30 Days</p>
+          </div>
+          <div class="border-l-2 border-green-700 px-4">
+            <p class="text-base font-extrabold mb-1">Discount</p>
+            <p class="italic font-bold text-lg sm:text-xl">20% OFF</p>
+          </div>
+          <div class="border-l-2 border-green-700 px-4">
+            <p class="text-base font-extrabold mb-1">You Pay</p>
+            <p class="italic font-bold text-lg sm:text-xl">₹3999/-</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Right Section -->
-    <section class="right-panel">
-      <div class="payment-summary">
-        <h3>Payment Summary</h3>
-        <p>Base Plan Cost <span>₹ 4,999.00</span></p>
-        <p>GST(18%) <span>₹ 899.82</span></p>
-        <p>Total Bill Amount <span>₹ 5,898.82</span></p>
-        <p>Discount/Coupon <span>- ₹ 1,898.82</span></p>
-        <hr>
-        <p><strong>Total Payable</strong> <span><strong>₹ 3,999.00</strong></span></p>
-      </div>
-
-      <div class="discount-section">
-        <input type="text" placeholder="Have a discount code?">
-        <button>Apply</button>
-      </div>
-
-      <div class="razorpay-box">
-        <img src="../images/razorpay.png" alt="Razorpay" class="razorpay-logo">
-        <ul class="payment-options">
-          <li><div class="icon"><img src="../images/UPI Unified Payments Interface.svg" alt="UPI"></div>UPI</li>
-          <li><div class="icon"><img src="../images/credit.png" alt="Card"></div>Credit/Debit</li>
-          <li><div class="icon"><img src="../images/mobile-banking.png" alt="NetBanking"></div>Net Banking</li>
-          <li><div class="icon"><img src="../images/wallet.png" alt="Wallet"></div>Wallet</li>
-        </ul>
-      </div>
-
-      <div class="gst-section">
-        <label for="gst">Do you have GSTIN?</label><br/>
-        <input type="text" id="gst" placeholder="Enter Here">
-        <button>Get Invoice</button>
-      </div>
+    <!-- Buttons -->
+    <section class="flex justify-between max-w-4xl mx-auto gap-10">
+      <button
+        class="btn-gradient text-white font-semibold rounded-md px-8 py-2 shadow-lg hover:shadow-xl transition duration-300"
+        type="button"
+        aria-label="Select Another Plan"
+        onclick="alert('You selected another plan.')"  
+      >
+        Select Another Plan
+      </button>
+      <button
+        class="btn-gradient text-white font-semibold rounded-md px-8 py-2 shadow-lg hover:shadow-xl transition duration-300"
+        type="button"
+        aria-label="Start Recovery Plan"
+        onclick="alert('Recovery Plan started. Welcome to healing!')"
+      >
+        Start Recovery Plan
+      </button>
     </section>
-  </main>
-
-
-
-
-   <!-- Footer -->
+  </main> 
+  <!-- Footer -->
   <footer>
     <div class="footer-top">Mealpathy</div>
     <div class="footer-columns">
